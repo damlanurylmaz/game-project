@@ -7,7 +7,6 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useState } from 'react';
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router';
-import Success from '../../Components/Success';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -34,18 +33,6 @@ const Login = () => {
 
     setErrors(newErrors);
     return isValid;
-
-//     if(!loginData.email) {
-//         setErrors((prev) => ({...prev , email: 'Email is required'}))
-//     } else {
-//         setErrors((prev) => ({...prev , email: ''}))
-//     }
-
-//     if(!loginData.password) {
-//         setErrors((prev) => ({...prev , password: 'Password is required'}))
-//     } else {
-//         setErrors((prev) => ({...prev , password: ''}))
-//     }
   };
 
   const loginHandler = async (e) => {
@@ -53,9 +40,10 @@ const Login = () => {
       const loginRequest = await axios.get(`http://localhost:3000/users?email=${loginData.email}&password=${loginData.password}`)
       if(loginRequest.data.length > 0) {
         const newPath = '/game';
-        alert('Login Successfuly')
+        navigate(newPath);
+        alert('Login Successfuly');
       } else {
-        alert('Try again')
+        alert('Try again');
       }
     }       
   };
