@@ -18,6 +18,12 @@ export const LoginWrapper = styled.div`
             padding: 20px 40px;
             font-weight: bold;
             font-size: 22px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            span {
+                padding: 10px;
+            }
         }
         .input-container {
             display: flex;

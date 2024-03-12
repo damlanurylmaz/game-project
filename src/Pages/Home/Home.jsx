@@ -11,6 +11,11 @@ const Home = () => {
     navigate(newPath);
   };
 
+  const openRegisterPage = () => {
+    const newPath = '/register';
+    navigate(newPath);
+  };
+
   return (
     <HomeWrapper>
       <Background />
@@ -21,7 +26,9 @@ const Home = () => {
           >
             LOGIN
           </Button>
-          <Button>
+          <Button
+            onClick={openRegisterPage}
+          >
             REGISTER
           </Button>
         </div>  

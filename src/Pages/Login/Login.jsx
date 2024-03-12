@@ -54,7 +54,7 @@ const Login = () => {
   };
 
   const backHomeHandler = () => {
-    const newPath = '/home';
+    const newPath = '/';
     navigate(newPath);
   };
 
