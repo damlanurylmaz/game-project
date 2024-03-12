@@ -7,7 +7,6 @@ export const LoginWrapper = styled.div`
         left: 50%;
         transform: translate(-50%, -50%);
         width: 500px;
-        /* background-color: rgba(108, 39, 255, 0.75); */
         background: rgba(108, 39, 255, 0.1);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);

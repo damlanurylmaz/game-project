@@ -1,4 +1,4 @@
-import { Button, InputAdornment, TextField } from '@mui/material';
+import { Alert, Button, InputAdornment, Snackbar, Stack, TextField } from '@mui/material';
 import Background from '../Home/Background';
 import { LoginWrapper } from './Login.styled';
 import PersonIcon from '@mui/icons-material/Person';
@@ -10,12 +10,14 @@ import { Navigate, useNavigate } from 'react-router';
 
 const Login = () => {
     const navigate = useNavigate();
-   const [loginData, setLoginData] = useState({
-        email: '',
-        password: ''
-   });
+    const [loginData, setLoginData] = useState({
+          email: '',
+          password: ''
+    });
 
    const [errors, setErrors] = useState({});
+   const [openSuccess, setOpenSuccess] = useState(false);
+   const [openFailed, setOpenFailed] = useState(false);
 
    const validateForm = () => {
     let isValid = true;
@@ -38,14 +40,17 @@ const Login = () => {
   const loginHandler = async (e) => {
     if (validateForm()) {
       const loginRequest = await axios.get(`http://localhost:3000/users?email=${loginData.email}&password=${loginData.password}`)
-      if(loginRequest.data.length > 0) {
-        const newPath = '/game';
-        navigate(newPath);
-        alert('Login Successfuly');
+      if (loginRequest.data.length) {
+        setOpenSuccess(true);
       } else {
-        alert('Try again');
+        setOpenFailed(true);
       }
     }       
+  };
+
+  const handleClose = () => {
+    setOpenSuccess(false);
+    setOpenFailed(false);
   };
 
   const backHomeHandler = () => {
@@ -112,6 +117,26 @@ const Login = () => {
                 </Button>
             </div>
         </div>
+        <Snackbar open={openSuccess} autoHideDuration={6000} onClose={handleClose}>
+              <Alert
+                onClose={handleClose}
+                severity="success"
+                variant="filled"
+                sx={{ width: '100%' }}
+              >
+                Login Successful
+              </Alert>
+        </Snackbar>
+        <Snackbar open={openFailed} autoHideDuration={6000} onClose={handleClose}>
+              <Alert
+                onClose={handleClose}
+                severity="error"
+                variant="filled"
+                sx={{ width: '100%' }}
+              >
+                Try again!
+              </Alert>
+          </Snackbar>
     </LoginWrapper>
   )
 }
