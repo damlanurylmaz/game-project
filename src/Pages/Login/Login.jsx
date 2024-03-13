@@ -45,6 +45,7 @@ const Login = () => {
       } else {
         setOpenFailed(true);
       }
+      return;
     }       
   };
 
@@ -136,7 +137,7 @@ const Login = () => {
               >
                 Try again!
               </Alert>
-          </Snackbar>
+        </Snackbar>
     </LoginWrapper>
   )
 }
