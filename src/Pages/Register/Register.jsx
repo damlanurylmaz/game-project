@@ -33,6 +33,8 @@ const Register = () => {
     let isValid = true;
     const newError = {};
 
+    const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
+
     if(!registerData.name) {
       newError.name= 'Name is required';
       isValid = false;
@@ -48,13 +50,43 @@ const Register = () => {
       isValid = false;
     }
 
+    if(registerData.email && !emailRegex.test(registerData.email)) {
+      newError.email = 'Wrong email format!!';
+      isValid = false;
+    }
+
     if(!registerData.password) {
       newError.password = 'Password is required';
       isValid = false;
     }
 
+    if(registerData.password.length < 8) {
+      newError.password = 'Password cannot be less than 8 characters.';
+      isValid = false;
+    }
+
+    if(registerData.password.length > 15) {
+      newError.password = 'Password cannot be mora than 15 characters.';
+      isValid = false;
+    }
+
     if(!registerData.password2) {
       newError.password2 = 'Password is required';
+      isValid = false;
+    }
+
+    if(registerData.password2.length < 8) {
+      newError.password2 = 'Password cannot be less than 8 characters.';
+      isValid = false;
+    }
+
+    if(registerData.password2.length > 15) {
+      newError.password2 = 'Password cannot be more than 15 characters.';
+      isValid = false;
+    }
+
+    if(registerData.password !== registerData.password2) {
+      newError.password2 = 'Passwords should match.';
       isValid = false;
     }
 
