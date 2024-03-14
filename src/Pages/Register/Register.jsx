@@ -78,14 +78,10 @@ const Register = () => {
     if(registerData.password2.length < 8) {
       newError.password2 = 'Password cannot be less than 8 characters.';
       isValid = false;
-    }
-
-    if(registerData.password2.length > 15) {
+    } else if (registerData.password2.length > 15) {
       newError.password2 = 'Password cannot be more than 15 characters.';
       isValid = false;
-    }
-
-    if(registerData.password !== registerData.password2) {
+    } else if (registerData.password !== registerData.password2) {
       newError.password2 = 'Passwords should match.';
       isValid = false;
     }
