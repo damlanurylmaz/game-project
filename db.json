@@ -9,28 +9,12 @@
       "password2": "Damla123"
     },
     {
-      "id": "bfc1",
-      "name": "damla",
-      "surname": "yılmaz",
-      "email": "damla",
-      "password": "1234",
-      "password2": "1234"
-    },
-    {
-      "id": "6989",
-      "name": "damla",
-      "surname": "yılmaz",
-      "email": "damlanur.yilmaz@bahcesehir.edu.tr",
-      "password": "123",
-      "password2": "123"
-    },
-    {
-      "id": "ea71",
+      "id": "f261",
       "name": "damla",
       "surname": "yilmaz",
-      "email": "damla@hotmail.com",
-      "password": "123",
-      "password2": "123"
+      "email": "damlanur.yilmaz@bahcesehir.edu.tr",
+      "password": "12345678",
+      "password2": "12345678"
     }
   ]
 }

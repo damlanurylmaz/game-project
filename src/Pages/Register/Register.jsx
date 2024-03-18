@@ -110,7 +110,6 @@ const Register = () => {
 
   return (
     <RegisterWrapper>
-        <Background />
         <div className="register-container">
           <div className='header'>
                 <Button

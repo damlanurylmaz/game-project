@@ -64,7 +64,6 @@ const Login = () => {
 
   return (
     <LoginWrapper>
-        <Background />
         <div className='login-container'>
             <div className='header'>
                 <Button

@@ -11,11 +11,16 @@ export const BackgroundWrapper = styled.div`
 `;
 
 export const HomeWrapper = styled.div`
-    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     .header {
-        position: absolute;
-        top: 20px;
-        right: 20px;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 10px 30px;
         .button-container {
             display: flex;
             gap: 30px;
@@ -26,5 +31,8 @@ export const HomeWrapper = styled.div`
                 font-weight: bolder;
             }
         }
+    }
+    .body-container {
+        flex: 6;
     }
 `;
