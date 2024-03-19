@@ -16,7 +16,6 @@ export const HomeWrapper = styled.div`
     display: flex;
     flex-direction: column;
     .header {
-        flex: 1;
         display: flex;
         align-items: center;
         justify-content: flex-end;
@@ -33,6 +32,17 @@ export const HomeWrapper = styled.div`
         }
     }
     .body-container {
-        flex: 6;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+        .game-images {
+            .game-image {
+                width: 200px;
+                height: 200px;
+                border-radius: 10px;
+            }
+        }
     }
 `;

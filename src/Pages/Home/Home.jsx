@@ -13,6 +13,8 @@ const Home = () => {
   const navigate = useNavigate();
   const games = [tictactoe,chess,hangman,snake];
 
+  console.log(games);
+
   const openLoginPage = () => {
     const newPath = '/login';
     navigate(newPath);
@@ -22,6 +24,10 @@ const Home = () => {
     const newPath = '/register';
     navigate(newPath);
   };
+
+  const openGamePage = (e) => {
+    console.log(e.target.src, 'e')
+  }; 
 
   return (
     <HomeWrapper>
@@ -42,10 +48,16 @@ const Home = () => {
       </div>
       <div className='body-container'>
           {
-            games.map((game) => {
-              <div className='game-images'>
-                <img className='game-image' src={game} />
+            games.map((game,index) => {
+             return (
+              <div key={index} className='game-images'>
+                <Button
+                  onClick={(e) => openGamePage(e)}
+                >
+                  <img className='game-image' src={game} />
+                </Button>
               </div>
+             )
             })
           }
         </div>
