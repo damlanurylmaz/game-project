@@ -42,6 +42,7 @@ const Login = () => {
       const loginRequest = await axios.get(`http://localhost:3000/users?email=${loginData.email}&password=${loginData.password}`)
       if (loginRequest.data.length) {
         setOpenSuccess(true);
+        navigate('/game');
       } else {
         setOpenFailed(true);
       }
