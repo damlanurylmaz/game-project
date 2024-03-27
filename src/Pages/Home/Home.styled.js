@@ -11,11 +11,14 @@ export const BackgroundWrapper = styled.div`
 `;
 
 export const HomeWrapper = styled.div`
-    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     .header {
-        position: absolute;
-        top: 20px;
-        right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
         .button-container {
             display: flex;
             gap: 30px;
@@ -24,6 +27,20 @@ export const HomeWrapper = styled.div`
                 padding: 15px;
                 color: #FFFFFF;
                 font-weight: bolder;
+            }
+        }
+    }
+    .body-container {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+        .game-images {
+            .game-image {
+                width: 200px;
+                height: 200px;
+                border-radius: 10px;
             }
         }
     }

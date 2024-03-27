@@ -1,10 +1,36 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "Damla",
-            "email": "damlanur.ylmaz@hotmail.com",
-            "password": 123456
-        }
-    ]
+  "users": [
+    {
+      "id": "1825",
+      "name": "Damla",
+      "surname": "Yilmazz",
+      "email": "damlanur.yilmaz@bahcesehir.edu.tr",
+      "password": "Damla123",
+      "password2": "Damla123"
+    },
+    {
+      "id": "f261",
+      "name": "damla",
+      "surname": "yilmaz",
+      "email": "damlanur.yilmaz@bahcesehir.edu.tr",
+      "password": "12345678",
+      "password2": "12345678"
+    },
+    {
+      "id": "0964",
+      "name": "damla",
+      "surname": "yilmaz",
+      "email": "damla@gmail.com",
+      "password": "12345678",
+      "password2": "12345678"
+    },
+    {
+      "id": "6f8d",
+      "name": "admin",
+      "surname": "admin",
+      "email": "admin@gmail.com",
+      "password": "12345678",
+      "password2": "12345678"
+    }
+  ]
 }

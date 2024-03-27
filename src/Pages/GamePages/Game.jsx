@@ -1,8 +1,10 @@
-import React from 'react'
+import { GameWrapper } from "./Game.style"
 
 const Game = () => {
   return (
-    <div>Game</div>
+    <GameWrapper>
+        
+    </GameWrapper>
   )
 }
 
