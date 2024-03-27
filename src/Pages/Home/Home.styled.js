@@ -19,7 +19,6 @@ export const HomeWrapper = styled.div`
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        padding: 10px 30px;
         .button-container {
             display: flex;
             gap: 30px;

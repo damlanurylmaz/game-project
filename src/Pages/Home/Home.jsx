@@ -6,6 +6,7 @@ import tictactoe from '../../assets/pngs/tictactoe.jpeg';
 import chess from '../../assets/pngs/chess.jpeg';
 import hangman from '../../assets/pngs/hangman.jpeg';
 import snake from '../../assets/pngs/snake.jpeg';
+import Header from '../../Components/Header';
 
 
 
@@ -33,7 +34,8 @@ const Home = () => {
     <HomeWrapper>
       {/* <Background /> */}
       <div className='header'>
-        <div className='button-container'>
+        <Header />
+        {/* <div className='button-container'>
           <Button
             onClick={openLoginPage}
           >
@@ -44,7 +46,7 @@ const Home = () => {
           >
             REGISTER
           </Button>
-        </div>  
+        </div>   */}
       </div>
       <div className='body-container'>
           {

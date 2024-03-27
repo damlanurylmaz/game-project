@@ -15,6 +15,22 @@
       "email": "damlanur.yilmaz@bahcesehir.edu.tr",
       "password": "12345678",
       "password2": "12345678"
+    },
+    {
+      "id": "0964",
+      "name": "damla",
+      "surname": "yilmaz",
+      "email": "damla@gmail.com",
+      "password": "12345678",
+      "password2": "12345678"
+    },
+    {
+      "id": "6f8d",
+      "name": "admin",
+      "surname": "admin",
+      "email": "admin@gmail.com",
+      "password": "12345678",
+      "password2": "12345678"
     }
   ]
 }
