@@ -41,6 +41,11 @@ export const HomeWrapper = styled.div`
                 width: 200px;
                 height: 200px;
                 border-radius: 10px;
+                transition: .3s;
+                :hover {
+                    width:300px;
+                    height: 300px;
+                }
             }
         }
     }
