@@ -37,9 +37,8 @@ function Header({ openLoginPage, openRegisterPage }) {
 
   return (
     <AppBar style={{background:'rgba(108, 39, 255, 0.1)' }} position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" style={{}}>
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -65,9 +64,9 @@ function Header({ openLoginPage, openRegisterPage }) {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="white"
             >
-              <MenuIcon />
+              <MenuIcon color='primary' />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -84,7 +83,7 @@ function Header({ openLoginPage, openRegisterPage }) {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none' }
               }}
             >
               {pages.map((page) => (
@@ -94,7 +93,6 @@ function Header({ openLoginPage, openRegisterPage }) {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -107,7 +105,7 @@ function Header({ openLoginPage, openRegisterPage }) {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#6F7EFF',
               textDecoration: 'none',
             }}
           >
@@ -129,7 +127,7 @@ function Header({ openLoginPage, openRegisterPage }) {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="Damla" src="/static/images/avatar/2.jpg" />
                 </IconButton>
               </Tooltip>
               <Menu
