@@ -34,7 +34,7 @@ const Home = () => {
     <HomeWrapper>
       {/* <Background /> */}
       <div className='header'>
-        <Header />
+        <Header openRegisterPage={openRegisterPage} openLoginPage={openLoginPage} />
         {/* <div className='button-container'>
           <Button
             onClick={openLoginPage}

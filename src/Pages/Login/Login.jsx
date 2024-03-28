@@ -7,6 +7,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useState } from 'react';
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router';
+import Header from '../../Components/Header';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -42,7 +43,8 @@ const Login = () => {
       const loginRequest = await axios.get(`http://localhost:3000/users?email=${loginData.email}&password=${loginData.password}`)
       if (loginRequest.data.length) {
         setOpenSuccess(true);
-        navigate('/game');
+        localStorage.setItem('userId', loginRequest.data[0].id);
+        navigate('/');
       } else {
         setOpenFailed(true);
       }
@@ -65,6 +67,9 @@ const Login = () => {
 
   return (
     <LoginWrapper>
+        <div className='header-container'>
+          <Header />
+        </div> 
         <div className='login-container'>
             <div className='header'>
                 <Button
