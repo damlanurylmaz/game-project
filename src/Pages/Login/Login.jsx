@@ -1,12 +1,12 @@
-import { Alert, Button, InputAdornment, Snackbar, Stack, TextField } from '@mui/material';
-import Background from '../Home/Background';
+import { Alert, Button, InputAdornment, Snackbar, TextField } from '@mui/material';
 import { LoginWrapper } from './Login.styled';
 import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useState } from 'react';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
+import Header from '../../Components/Header';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -42,7 +42,8 @@ const Login = () => {
       const loginRequest = await axios.get(`http://localhost:3000/users?email=${loginData.email}&password=${loginData.password}`)
       if (loginRequest.data.length) {
         setOpenSuccess(true);
-        navigate('/game');
+        localStorage.setItem('userId', loginRequest.data[0].id);
+        navigate('/');
       } else {
         setOpenFailed(true);
       }
@@ -65,6 +66,9 @@ const Login = () => {
 
   return (
     <LoginWrapper>
+        <div className='header-container'>
+          <Header />
+        </div> 
         <div className='login-container'>
             <div className='header'>
                 <Button

@@ -1,6 +1,14 @@
 import styled from "@emotion/styled";
 
 export const LoginWrapper = styled.div`
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
     .login-container {
         position: absolute;
         top: 50%;
