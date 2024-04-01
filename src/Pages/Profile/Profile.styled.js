@@ -10,6 +10,7 @@ export const ProfileWrapper = styled.div`
         width: 100%;
         display: flex;
         justify-content: center;
+        margin-top: 20px;
         .profile-form {
             width: 1000px;
             background: rgba(108, 39, 255, 0.1);
@@ -29,18 +30,6 @@ export const ProfileWrapper = styled.div`
                     .image {
                         width: 200px;
                         border-radius: 50%;
-                    }
-                }
-                .name-input-container {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 30px;
-                    .MuiInputBase-root  {
-                        background-color: #FFEFD0;
-                        width: 300px;
-                        border-radius: 15px;
-                        outline: none;
-                        border: none;
                     }
                 }
             }
@@ -65,11 +54,11 @@ export const ProfileWrapper = styled.div`
             }
             .update-button-container {
                 display: flex;
-                justify-content: flex-end;
+                justify-content: center;
                 margin-top: 50px;
                 .MuiButtonBase-root {
                     background-color: #6C27FF;
-                    padding: 15px;
+                    padding: 15px 50px;
                     font-weight: bold;
                 }
             }

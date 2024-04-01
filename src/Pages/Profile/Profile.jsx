@@ -25,8 +25,10 @@ const Profile = () => {
                     <div className='profile-image'>
                         <img className='image' src={vesikalik} alt='Profile Image'/>
                     </div>
-                    <div className='name-input-container'>
-                        <h1>Profile Information</h1>
+                    <h1>Profile Information</h1>
+                </div>
+                <div className='form-changeable-part'>
+                    <div className='changeable-input-container'>
                         <TextField
                             id="outlined-read-only-input"
                             defaultValue="Name"
@@ -44,8 +46,6 @@ const Profile = () => {
                             disabled
                         />
                     </div>
-                </div>
-                <div className='form-changeable-part'>
                     <div className='changeable-input-container'>
                         <Select
                             labelId="demo-simple-select-label"
