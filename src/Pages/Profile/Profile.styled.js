@@ -8,7 +8,6 @@ export const ProfileWrapper = styled.div`
     }
     .profile-container {
         width: 100%;
-        height: 90%;
         display: flex;
         justify-content: center;
         .profile-form {
@@ -62,6 +61,16 @@ export const ProfileWrapper = styled.div`
                         outline: none;
                         border: none;
                     }
+                }
+            }
+            .update-button-container {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 50px;
+                .MuiButtonBase-root {
+                    background-color: #6C27FF;
+                    padding: 15px;
+                    font-weight: bold;
                 }
             }
         }

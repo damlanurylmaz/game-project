@@ -1,7 +1,7 @@
 import Header from '../../Components/Header'
 import { ProfileWrapper } from './Profile.styled'
 import vesikalik from '../../assets/pngs/vesikalik.jpg'
-import { MenuItem, Select, TextField } from '@mui/material'
+import { Button, MenuItem, Select, TextField } from '@mui/material'
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -75,6 +75,11 @@ const Profile = () => {
                             type='password'
                         />
                     </div>  
+                </div>
+                <div className='update-button-container'>
+                    <Button>
+                        Update
+                    </Button>        
                 </div>
             </div>
         </div>
