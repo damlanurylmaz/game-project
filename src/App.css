@@ -8,3 +8,19 @@ body {
     background-position: center; 
     background-size: cover;
 }
+
+/* .header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .button-container {
+        display: flex;
+        gap: 30px;
+        .MuiButtonBase-root {
+            background-color: #6C27FF;
+            padding: 15px;
+            color: #FFFFFF;
+            font-weight: bolder;
+        }
+    }
+} */

@@ -6,6 +6,7 @@ import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import Game from './Pages/GamePages/Game';
 import Register from './Pages/Register/Register';
+import Profile from './Pages/Profile/Profile';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />}/>
         <Route path='/game' element={<Game />} />
+        <Route path='/profile' element={<Profile />} />
       </Routes>
     </BrowserRouter>
   )
