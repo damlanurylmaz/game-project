@@ -1,9 +1,19 @@
 import Header from '../../Components/Header'
 import { ProfileWrapper } from './Profile.styled'
 import vesikalik from '../../assets/pngs/vesikalik.jpg'
-import { TextField } from '@mui/material'
+import { MenuItem, Select, TextField } from '@mui/material'
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { useState } from 'react'
 
 const Profile = () => {
+  const [gender, setGender] = useState('');
+
+  const handleChange = (e) => {
+    setGender(e.target.value);
+  };
   return (
     <ProfileWrapper>
         <div className='header'>
@@ -23,6 +33,7 @@ const Profile = () => {
                             InputProps={{
                                 readOnly: true,
                             }}
+                            disabled
                         />
                         <TextField
                             id="outlined-read-only-input"
@@ -30,28 +41,40 @@ const Profile = () => {
                             InputProps={{
                                 readOnly: true,
                             }}
+                            disabled
                         />
                     </div>
                 </div>
                 <div className='form-changeable-part'>
                     <div className='changeable-input-container'>
-                        <TextField
-                            id="outlined-helperText"
-                            defaultValue="Enter new email address."
-                        />
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            label="Gender"
+                            value={gender}
+                            onChange={handleChange}
+                        >
+                            <MenuItem value={'Female'}>Female</MenuItem>
+                            <MenuItem value={'Male'}>Male</MenuItem>
+                            <MenuItem value={'I don`t want to specify'}>I don`t want to specify</MenuItem>
+                        </Select>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DemoContainer components={['DatePicker']}>
+                                <DatePicker/>
+                            </DemoContainer>
+                        </LocalizationProvider>
                     </div>
                     <div className='changeable-input-container'>
                         <TextField
                             id="outlined-helperText"
                             defaultValue="damlanur@hotmail.com"
-                            disabled
-                            type='password'
                         />
                         <TextField
                             id="outlined-helperText"
-                            defaultValue="Enter new password."
+                            defaultValue="123456"
+                            type='password'
                         />
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>
