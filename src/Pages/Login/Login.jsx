@@ -14,7 +14,6 @@ const Login = () => {
           email: '',
           password: ''
     });
-
    const [errors, setErrors] = useState({});
    const [openSuccess, setOpenSuccess] = useState(false);
    const [openFailed, setOpenFailed] = useState(false);
@@ -27,12 +26,10 @@ const Login = () => {
       newErrors.email = "Email is required";
       isValid = false;
     } 
-
     if (!loginData.password) {
       newErrors.password = "Password is required";
       isValid = false;
     }
-
     setErrors(newErrors);
     return isValid;
   };

@@ -6,14 +6,29 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios';
 
 const Profile = () => {
   const [gender, setGender] = useState('');
+  const userId = localStorage.getItem('userId');
+  const [profileInfo, setProfileInfo] = useState({});
 
   const handleChange = (e) => {
     setGender(e.target.value);
   };
+
+  useEffect(() => {
+    const getProfileInfo = async () => {
+        const profileReq = await axios.get(`http://localhost:3000/users/${userId}`);
+        console.log(profileReq);
+        setProfileInfo(profileReq.data);
+    };
+    getProfileInfo();
+  },[]);
+
+  console.log(profileInfo)
+
   return (
     <ProfileWrapper>
         <div className='header'>
@@ -31,18 +46,12 @@ const Profile = () => {
                     <div className='changeable-input-container'>
                         <TextField
                             id="outlined-read-only-input"
-                            defaultValue="Name"
-                            InputProps={{
-                                readOnly: true,
-                            }}
+                            value={profileInfo.name}
                             disabled
                         />
                         <TextField
                             id="outlined-read-only-input"
-                            defaultValue="Surname"
-                            InputProps={{
-                                readOnly: true,
-                            }}
+                            value={profileInfo.surname}
                             disabled
                         />
                     </div>
