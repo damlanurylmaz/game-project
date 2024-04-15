@@ -34,6 +34,10 @@ const Login = () => {
     return isValid;
   };
 
+  const openRegisterPage = () => {
+    navigate('/register');
+  };
+
   const loginHandler = async (e) => {
     if (validateForm()) {
       const loginRequest = await axios.get(`http://localhost:3000/users?email=${loginData.email}&password=${loginData.password}`)
@@ -64,7 +68,7 @@ const Login = () => {
   return (
     <LoginWrapper>
         <div className='header-container'>
-          <Header />
+          <Header openRegisterPage={openRegisterPage} />
         </div> 
         <div className='login-container'>
             <div className='header'>

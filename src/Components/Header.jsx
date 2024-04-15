@@ -36,6 +36,9 @@ function Header({ openLoginPage, openRegisterPage }) {
     setAnchorElUser(null);
     if(setting === 'Profile') {
       navigate('/profile');
+    } else {
+      window.localStorage.removeItem('userId');
+      navigate('/');
     }
   };
 
@@ -47,7 +50,7 @@ function Header({ openLoginPage, openRegisterPage }) {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },

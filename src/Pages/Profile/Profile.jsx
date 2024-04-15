@@ -1,5 +1,4 @@
 import Header from '../../Components/Header'
-import { ProfileWrapper } from './Profile.styled'
 import vesikalik from '../../assets/pngs/vesikalik.jpg'
 import { Button, MenuItem, Select, TextField } from '@mui/material'
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
@@ -8,15 +7,43 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useEffect, useState } from 'react'
 import axios from 'axios';
+import { ProfileWrapper } from './Profile.styled';
+import dayjs from 'dayjs';
 
 const Profile = () => {
-  const [gender, setGender] = useState('');
   const userId = localStorage.getItem('userId');
-  const [profileInfo, setProfileInfo] = useState({});
+  const [profileInfo, setProfileInfo] = useState({
+    name: '',
+    surname: '',
+    gender: '',
+    bornDate: null,
+    email: '',
+    password: ''
+  });
 
   const handleChange = (e) => {
-    setGender(e.target.value);
+    // setGender(e.target.value);
+    console.log(e.target.value);
+    setProfileInfo({...profileInfo, gender: e.target.value});
   };
+
+  const dateHandler = (newValue) => {
+    setProfileInfo({...profileInfo, bornDate: newValue});
+  };
+
+  const updateInformation = async () => {
+    console.log(profileInfo);
+    const updatedData = {...profileInfo, bornDate: new Date(profileInfo.bornDate)};
+    console.log(updatedData, 'update')
+    try {
+        await axios.put(`http://localhost:3000/users/${userId}`, updatedData);
+        console.log("Profile information updated successfully!");
+    } catch (error) {
+        console.error("Error updating profile information:", error);
+    }
+  };
+
+  console.log(profileInfo, 'profile')
 
   useEffect(() => {
     const getProfileInfo = async () => {
@@ -26,8 +53,6 @@ const Profile = () => {
     };
     getProfileInfo();
   },[]);
-
-  console.log(profileInfo)
 
   return (
     <ProfileWrapper>
@@ -57,36 +82,40 @@ const Profile = () => {
                     </div>
                     <div className='changeable-input-container'>
                         <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
                             label="Gender"
-                            value={gender}
+                            value={profileInfo.gender}
                             onChange={handleChange}
                         >
                             <MenuItem value={'Female'}>Female</MenuItem>
                             <MenuItem value={'Male'}>Male</MenuItem>
-                            <MenuItem value={'I don`t want to specify'}>I don`t want to specify</MenuItem>
                         </Select>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DemoContainer components={['DatePicker']}>
-                                <DatePicker/>
+                                <DatePicker 
+                                    value={dayjs(profileInfo.bornDate)}
+                                    onChange={dateHandler}
+                                />
                             </DemoContainer>
                         </LocalizationProvider>
                     </div>
                     <div className='changeable-input-container'>
                         <TextField
                             id="outlined-helperText"
-                            defaultValue="damlanur@hotmail.com"
+                            value={profileInfo.email}
+                            onChange={(e) => (setProfileInfo({...profileInfo, email: e.target.value}))}
                         />
                         <TextField
                             id="outlined-helperText"
-                            defaultValue="123456"
+                            value={profileInfo.password}
                             type='password'
+                            onChange={(e) => (setProfileInfo({...profileInfo, password: e.target.value}))}
                         />
                     </div>  
                 </div>
                 <div className='update-button-container'>
-                    <Button>
+                    <Button
+                        onClick={updateInformation}
+                    >
                         Update
                     </Button>        
                 </div>

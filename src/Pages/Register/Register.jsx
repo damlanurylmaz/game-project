@@ -5,6 +5,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import axios from "axios";
+import Header from "../../Components/Header";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -91,11 +92,19 @@ const Register = () => {
 
   };
 
+  const openLoginPage = () => {
+    navigate('/login');
+  };
+
   const registerHandler = async () => {
     if(validateForm()) {
+      const newData = {
+        ...registerData
+      }
+      delete newData.password2;
       fetch('http://localhost:3000/users', {
       method: 'POST',
-      body: JSON.stringify(registerData)
+      body: JSON.stringify(newData)
       }).then((res) => {
         setOpenSuccess(true);
       }).catch((err) => {
@@ -110,6 +119,9 @@ const Register = () => {
 
   return (
     <RegisterWrapper>
+        <div className='header-container'>
+          <Header openLoginPage={openLoginPage} />
+        </div> 
         <div className="register-container">
           <div className='header'>
                 <Button
