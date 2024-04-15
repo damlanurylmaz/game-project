@@ -1,6 +1,6 @@
 import Header from '../../Components/Header'
 import vesikalik from '../../assets/pngs/vesikalik.jpg'
-import { Button, MenuItem, Select, TextField } from '@mui/material'
+import { Alert, Button, MenuItem, Select, Snackbar, TextField } from '@mui/material'
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -12,6 +12,7 @@ import dayjs from 'dayjs';
 
 const Profile = () => {
   const userId = localStorage.getItem('userId');
+  const [error, setError] = useState({});
   const [profileInfo, setProfileInfo] = useState({
     name: '',
     surname: '',
@@ -20,6 +21,38 @@ const Profile = () => {
     email: '',
     password: ''
   });
+  const [openSuccess, setOpenSuccess] = useState(false);
+  const [openFailed, setOpenFailed] = useState(false);
+  
+  const handleClose = () => {
+    setOpenSuccess(false);
+    setOpenFailed(false);
+  };
+
+  const validateForm = () =>{
+    let isValid = true;
+    const newError = {};
+    const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
+
+    if(!emailRegex.test(profileInfo.email)) {
+        newError.email = 'Wrong email format!!';
+        isValid = false;
+    }
+
+    if(profileInfo.password.length < 8) {
+        newError.password = 'Password cannot be less than 8 characters.';
+        isValid = false;
+    }
+  
+    if(profileInfo.password.length > 15) {
+    newError.password = 'Password cannot be more than 15 characters.';
+    isValid = false;
+    }
+
+    setError(newError);
+    return isValid;
+
+  };
 
   const handleChange = (e) => {
     // setGender(e.target.value);
@@ -32,14 +65,15 @@ const Profile = () => {
   };
 
   const updateInformation = async () => {
-    console.log(profileInfo);
-    const updatedData = {...profileInfo, bornDate: new Date(profileInfo.bornDate)};
-    console.log(updatedData, 'update')
-    try {
-        await axios.put(`http://localhost:3000/users/${userId}`, updatedData);
-        console.log("Profile information updated successfully!");
-    } catch (error) {
-        console.error("Error updating profile information:", error);
+    if(validateForm()) {
+        const updatedData = {...profileInfo, bornDate: new Date(profileInfo.bornDate)};
+        console.log(updatedData, 'update')
+        try {
+            await axios.put(`http://localhost:3000/users/${userId}`, updatedData);
+            console.log("Profile information updated successfully!");
+        } catch (error) {
+            console.error("Error updating profile information:", error);
+        }
     }
   };
 
@@ -103,12 +137,16 @@ const Profile = () => {
                             id="outlined-helperText"
                             value={profileInfo.email}
                             onChange={(e) => (setProfileInfo({...profileInfo, email: e.target.value}))}
+                            error={!!error.email}
+                            helperText={error.email} 
                         />
                         <TextField
                             id="outlined-helperText"
                             value={profileInfo.password}
                             type='password'
                             onChange={(e) => (setProfileInfo({...profileInfo, password: e.target.value}))}
+                            error={!!error.password}
+                            helperText={error.password} 
                         />
                     </div>  
                 </div>
@@ -121,6 +159,26 @@ const Profile = () => {
                 </div>
             </div>
         </div>
+        <Snackbar open={openSuccess} autoHideDuration={6000} onClose={handleClose}>
+              <Alert
+                onClose={handleClose}
+                severity="success"
+                variant="filled"
+                sx={{ width: '100%' }}
+              >
+                User Information Updated!
+              </Alert>
+        </Snackbar>
+        <Snackbar open={openFailed} autoHideDuration={6000} onClose={handleClose}>
+              <Alert
+                onClose={handleClose}
+                severity="error"
+                variant="filled"
+                sx={{ width: '100%' }}
+              >
+                Try again!
+              </Alert>
+          </Snackbar>
     </ProfileWrapper>
   )
 }

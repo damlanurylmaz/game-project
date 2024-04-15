@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import './Pages/Home/Home';
 import './Pages/GamePages/Game';
 import { Suspense, lazy } from 'react';
-import Loading from './Components/Loading';
 const Home = lazy(() => import('./Pages/Home/Home'));
 const Login = lazy(() => import('./Pages/Login/Login'));
 const Game = lazy(() => import('./Pages/GamePages/Game'));

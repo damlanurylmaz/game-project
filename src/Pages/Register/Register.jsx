@@ -20,11 +20,6 @@ const Register = () => {
    const [openSuccess, setOpenSuccess] = useState(false);
    const [openFailed, setOpenFailed] = useState(false);
 
-  const handleClose = () => {
-    setOpenSuccess(false);
-    setOpenFailed(false);
-  };
-
   const backHomeHandler = () => {
     const newPath = "/";
     navigate(newPath);
@@ -67,7 +62,7 @@ const Register = () => {
     }
 
     if(registerData.password.length > 15) {
-      newError.password = 'Password cannot be mora than 15 characters.';
+      newError.password = 'Password cannot be more than 15 characters.';
       isValid = false;
     }
 

@@ -36,7 +36,7 @@ function Header({ openLoginPage, openRegisterPage }) {
     setAnchorElUser(null);
     if(setting === 'Profile') {
       navigate('/profile');
-    } else {
+    } else if(setting === 'Logout'){
       window.localStorage.removeItem('userId');
       navigate('/');
     }
