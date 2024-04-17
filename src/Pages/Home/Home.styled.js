@@ -63,10 +63,10 @@ export const HomeWrapper = styled.div`
                     position: absolute;
                     width: 100%;
                     height: 100%;
-                    padding: 10px;
                     .hovered-header {
                         display: flex;
                         justify-content: flex-end;
+                        padding: 10px;
                     }
             }
             }
