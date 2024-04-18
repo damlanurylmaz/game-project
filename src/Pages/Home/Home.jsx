@@ -34,19 +34,7 @@ const Home = () => {
     <HomeWrapper>
       {/* <Background /> */}
       <div className='header'>
-        <Header />
-        {/* <div className='button-container'>
-          <Button
-            onClick={openLoginPage}
-          >
-            LOGIN
-          </Button>
-          <Button
-            onClick={openRegisterPage}
-          >
-            REGISTER
-          </Button>
-        </div>   */}
+        <Header openRegisterPage={openRegisterPage} openLoginPage={openLoginPage} />
       </div>
       <div className='body-container'>
           {

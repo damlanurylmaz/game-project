@@ -1,6 +1,24 @@
 import styled from "@emotion/styled";
 
 export const LoginWrapper = styled.div`
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        .button-container {
+            display: flex;
+            gap: 30px;
+            .MuiButtonBase-root {
+                background-color: #6C27FF;
+                padding: 15px;
+                color: #FFFFFF;
+                font-weight: bolder;
+            }
+        }
+    }
     .login-container {
         position: absolute;
         top: 50%;
