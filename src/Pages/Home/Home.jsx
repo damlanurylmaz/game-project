@@ -1,11 +1,11 @@
 import { Button } from '@mui/material';
-import Background from './Background';
+// import Background from './Background';
 import { HomeWrapper } from './Home.styled';
 import { useNavigate } from 'react-router';
-import tictactoe from '../../assets/pngs/tictactoe.jpeg';
-import chess from '../../assets/pngs/chess.jpeg';
-import hangman from '../../assets/pngs/hangman.jpeg';
-import snake from '../../assets/pngs/snake.jpeg';
+// import tictactoe from '../../assets/pngs/tictactoe.jpeg';
+// import chess from '../../assets/pngs/chess.jpeg';
+// import hangman from '../../assets/pngs/hangman.jpeg';
+// import snake from '../../assets/pngs/snake.jpeg';
 import Header from '../../Components/Header';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';

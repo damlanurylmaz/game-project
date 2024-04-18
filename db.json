@@ -38,29 +38,31 @@
       "id": "1",
       "name": "TicTacToe",
       "image": "tictactoe",
-      "likes": [],
-      "rate": 4
+      "likes": [
+        "6f8d"
+      ],
+      "rates": 2
     },
     {
       "id": "2",
       "name": "Hangman",
       "image": "hangman",
-      "likes": 1,
-      "rate": 4
+      "likes": [],
+      "rates": 2
     },
     {
       "id": "3",
       "name": "Chess",
       "image": "chess",
       "likes": [],
-      "rate": 4
+      "rates": 2
     },
     {
       "id": "4",
       "name": "Snake",
       "image": "snake",
       "likes": [],
-      "rate": 4
+      "rates": 2
     }
   ]
 }
