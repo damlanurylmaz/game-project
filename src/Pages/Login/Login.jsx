@@ -14,7 +14,6 @@ const Login = () => {
           email: '',
           password: ''
     });
-
    const [errors, setErrors] = useState({});
    const [openSuccess, setOpenSuccess] = useState(false);
    const [openFailed, setOpenFailed] = useState(false);
@@ -27,14 +26,16 @@ const Login = () => {
       newErrors.email = "Email is required";
       isValid = false;
     } 
-
     if (!loginData.password) {
       newErrors.password = "Password is required";
       isValid = false;
     }
-
     setErrors(newErrors);
     return isValid;
+  };
+
+  const openRegisterPage = () => {
+    navigate('/register');
   };
 
   const loginHandler = async (e) => {
@@ -67,7 +68,7 @@ const Login = () => {
   return (
     <LoginWrapper>
         <div className='header-container'>
-          <Header />
+          <Header openRegisterPage={openRegisterPage} />
         </div> 
         <div className='login-container'>
             <div className='header'>
