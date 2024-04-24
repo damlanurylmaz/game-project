@@ -38,31 +38,34 @@
       "id": "1",
       "name": "TicTacToe",
       "image": "tictactoe",
-      "likes": [
-        "6f8d"
-      ],
-      "rates": 2
+      "likes": [],
+      "rates": [
+        {
+          "userId": "6f8d",
+          "rate": "4"
+        }
+      ]
     },
     {
       "id": "2",
       "name": "Hangman",
       "image": "hangman",
       "likes": [],
-      "rates": 2
+      "rates": []
     },
     {
       "id": "3",
       "name": "Chess",
       "image": "chess",
       "likes": [],
-      "rates": 2
+      "rates": []
     },
     {
       "id": "4",
       "name": "Snake",
       "image": "snake",
       "likes": [],
-      "rates": 2
+      "rates": []
     }
   ]
 }

@@ -35,7 +35,6 @@ const Home = () => {
 
   const likeHandler = async (gameId, index) => {
     const checkedIsLiked = games[index].likes.includes(userId);
-
     if(checkedIsLiked) {
       const filteredLikes = games[index].likes.filter((id) => id !== userId);
       try {
@@ -113,7 +112,7 @@ const Home = () => {
                     </div>
                     <div className='game-content'>
                       <h2>{game.name}</h2>
-                      <Rate />
+                      <Rate gamesState={[games, setGames] }gameId={game.id} index={index}/>
                     </div>
                   </div>
                 </Button>
