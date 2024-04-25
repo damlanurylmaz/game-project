@@ -8,6 +8,16 @@ export const LoginWrapper = styled.div`
         position: absolute;
         top: 0;
         width: 100%;
+        .button-container {
+            display: flex;
+            gap: 30px;
+            .MuiButtonBase-root {
+                background-color: #6C27FF;
+                padding: 15px;
+                color: #FFFFFF;
+                font-weight: bolder;
+            }
+        }
     }
     .login-container {
         position: absolute;

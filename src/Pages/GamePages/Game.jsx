@@ -1,4 +1,4 @@
-import { GameWrapper } from "./Game.style"
+import { GameWrapper } from "./Game.styled"
 
 const Game = () => {
   return (

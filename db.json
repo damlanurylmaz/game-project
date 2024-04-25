@@ -1,36 +1,24 @@
 {
   "users": [
     {
-      "id": "1825",
-      "name": "Damla",
-      "surname": "Yilmazz",
-      "email": "damlanur.yilmaz@bahcesehir.edu.tr",
-      "password": "Damla123",
-      "password2": "Damla123"
-    },
-    {
       "id": "f261",
       "name": "damla",
       "surname": "yilmaz",
-      "email": "damlanur.yilmaz@bahcesehir.edu.tr",
-      "password": "12345678",
-      "password2": "12345678"
-    },
-    {
-      "id": "0964",
-      "name": "damla",
-      "surname": "yilmaz",
-      "email": "damla@gmail.com",
-      "password": "12345678",
-      "password2": "12345678"
+      "email": "damlanur.yilmaz@hotmail.com",
+      "password": "damla123",
+      "password2": "12345678",
+      "gender": "Female",
+      "bornDate": "2001-04-23T21:00:00.000Z"
     },
     {
       "id": "6f8d",
       "name": "admin",
       "surname": "admin",
       "email": "admin@gmail.com",
-      "password": "12345678",
-      "password2": "12345678"
+      "password": "123",
+      "password2": "12345678",
+      "gender": "Female",
+      "bornDate": "2001-04-23T21:00:00.000Z"
     }
   ],
   "games": [

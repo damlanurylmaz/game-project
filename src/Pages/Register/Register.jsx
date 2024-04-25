@@ -5,6 +5,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import axios from "axios";
+import Header from "../../Components/Header";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -18,11 +19,6 @@ const Register = () => {
   });
    const [openSuccess, setOpenSuccess] = useState(false);
    const [openFailed, setOpenFailed] = useState(false);
-
-  const handleClose = () => {
-    setOpenSuccess(false);
-    setOpenFailed(false);
-  };
 
   const backHomeHandler = () => {
     const newPath = "/";
@@ -66,7 +62,7 @@ const Register = () => {
     }
 
     if(registerData.password.length > 15) {
-      newError.password = 'Password cannot be mora than 15 characters.';
+      newError.password = 'Password cannot be more than 15 characters.';
       isValid = false;
     }
 
@@ -91,11 +87,19 @@ const Register = () => {
 
   };
 
+  const openLoginPage = () => {
+    navigate('/login');
+  };
+
   const registerHandler = async () => {
     if(validateForm()) {
+      const newData = {
+        ...registerData
+      }
+      delete newData.password2;
       fetch('http://localhost:3000/users', {
       method: 'POST',
-      body: JSON.stringify(registerData)
+      body: JSON.stringify(newData)
       }).then((res) => {
         setOpenSuccess(true);
       }).catch((err) => {
@@ -110,6 +114,9 @@ const Register = () => {
 
   return (
     <RegisterWrapper>
+        <div className='header-container'>
+          <Header openLoginPage={openLoginPage} />
+        </div> 
         <div className="register-container">
           <div className='header'>
                 <Button
