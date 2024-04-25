@@ -10,21 +10,43 @@ export default function Rate({gameId, index, gamesState}) {
   const [games, setGames] = gamesState;
 
   const rateHandler = async (e) => {
+    console.log("clicked");
     const isRatedGame = games[index].rates.find((rateObj) => 
       rateObj.userId === userId
     );
+    console.log(isRatedGame);
     if(isRatedGame) {
-      const newRates = games[index].rates.filter((rateObj) => rateObj.userId !== userId);
+      const rateControl = games[index].rates.filter((rateObj) => rateObj.userId !== userId);
+      const newRates = [...rateControl, {userId, rate: e.target.defaultValue}];
       try {
         const rateRequest = await fetch(`http://localhost:3000/games/${gameId}`, {
           method: 'PATCH',
-          body:  JSON.stringify({ rates: [{userId, rate: e.target.defaultValue}]})
+          body:  JSON.stringify({ rates: newRates})
         });
         if(!rateRequest.ok) {
           console.error('Error updating rate status:', await rateRequest.text());
         } else {
           const updatedGames = [...games];
           updatedGames[index].rates = newRates;
+          setRateValue(e.target.defaultValue);
+          setGames(updatedGames);
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      try {
+        const newRates = [...games[index].rates, {userId, rate: e.target.defaultValue}];
+        const rateReq = await fetch(`http://localhost:3000/games/${gameId}`, {
+          method: 'PATCH',
+          body: JSON.stringify({ rates: newRates})
+        });
+        if(!rateReq.ok) {
+          console.error('Error updating rate status:', await rateReq.text());
+        } else {
+          const updatedGames = [...games];
+          updatedGames[index].rates = newRates;
+          setRateValue(e.target.defaultValue);
           setGames(updatedGames);
         }
       } catch (error) {
@@ -34,8 +56,9 @@ export default function Rate({gameId, index, gamesState}) {
   };
 
   useEffect(() => {
-
-  },[])
+    const newRateObj = games[index].rates.find((rateObj) => rateObj.userId === userId);
+    setRateValue(newRateObj !== undefined ? newRateObj.rate : 0);
+  },[]);
 
   return (
     <Box

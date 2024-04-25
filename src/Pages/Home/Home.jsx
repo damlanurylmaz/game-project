@@ -54,15 +54,16 @@ const Home = () => {
       }
     } else {
       try {
+        const likesArr = [...games[index].likes, userId];
         const likeRequest = await fetch(`http://localhost:3000/games/${gameId}`, {
           method: 'PATCH',
-          body: JSON.stringify({ likes: games[index].likes.push(userId)})
+          body: JSON.stringify({ likes: likesArr})
         });
         if(!likeRequest.ok) {
           console.error('Error updating like status:', await likeRequest.text());
         } else {
           const updatedGames = [...games];
-          updatedGames[index].likes.push(userId);
+          updatedGames[index].likes = likesArr;
           setGames(updatedGames);
         }
       } catch (error) {
