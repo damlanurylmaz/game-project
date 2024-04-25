@@ -20,5 +20,59 @@
       "gender": "Female",
       "bornDate": "2001-04-23T21:00:00.000Z"
     }
+  ],
+  "games": [
+    {
+      "id": "1",
+      "name": "TicTacToe",
+      "image": "tictactoe",
+      "likes": [
+        "6f8d"
+      ],
+      "rates": [
+        {
+          "userId": "6f8d",
+          "rate": "3"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Hangman",
+      "image": "hangman",
+      "likes": [],
+      "rates": [
+        {
+          "userId": "6f8d",
+          "rate": "1"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Chess",
+      "image": "chess",
+      "likes": [
+        "6f8d"
+      ],
+      "rates": [
+        {
+          "userId": "6f8d",
+          "rate": "2"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Snake",
+      "image": "snake",
+      "likes": [],
+      "rates": [
+        {
+          "userId": "6f8d",
+          "rate": "5"
+        }
+      ]
+    }
   ]
 }

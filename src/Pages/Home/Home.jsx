@@ -1,18 +1,21 @@
 import { Button } from '@mui/material';
-import Background from './Background';
+// import Background from './Background';
 import { HomeWrapper } from './Home.styled';
 import { useNavigate } from 'react-router';
-import tictactoe from '../../assets/pngs/tictactoe.jpeg';
-import chess from '../../assets/pngs/chess.jpeg';
-import hangman from '../../assets/pngs/hangman.jpeg';
-import snake from '../../assets/pngs/snake.jpeg';
+// import tictactoe from '../../assets/pngs/tictactoe.jpeg';
+// import chess from '../../assets/pngs/chess.jpeg';
+// import hangman from '../../assets/pngs/hangman.jpeg';
+// import snake from '../../assets/pngs/snake.jpeg';
 import Header from '../../Components/Header';
-
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import Rate from '../../Components/Rate';
+import { useEffect, useState } from 'react';
 
 const Home = () => {
+  const [games, setGames] = useState([]);
+  const userId = window.localStorage.getItem('userId');
   const navigate = useNavigate();
-  const games = [tictactoe,chess,hangman,snake];
 
   console.log(games);
 
@@ -30,6 +33,58 @@ const Home = () => {
     console.log(e.target.src, 'e')
   }; 
 
+  const likeHandler = async (gameId, index) => {
+    const checkedIsLiked = games[index].likes.includes(userId);
+    if(checkedIsLiked) {
+      const filteredLikes = games[index].likes.filter((id) => id !== userId);
+      try {
+        const likeRequest = await fetch(`http://localhost:3000/games/${gameId}`, {
+          method: 'PATCH',
+          body: JSON.stringify({ likes: filteredLikes})
+        });
+        if(!likeRequest.ok) {
+          console.error('Error updating like status:', await likeRequest.text());
+        } else {
+          const updatedGames = [...games];
+          updatedGames[index].likes = filteredLikes;
+          setGames(updatedGames);
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      try {
+        const likesArr = [...games[index].likes, userId];
+        const likeRequest = await fetch(`http://localhost:3000/games/${gameId}`, {
+          method: 'PATCH',
+          body: JSON.stringify({ likes: likesArr})
+        });
+        if(!likeRequest.ok) {
+          console.error('Error updating like status:', await likeRequest.text());
+        } else {
+          const updatedGames = [...games];
+          updatedGames[index].likes = likesArr;
+          setGames(updatedGames);
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  };
+
+  useEffect(() => {
+    const fetchGames = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/games');
+        const gameData = await response.json();
+        setGames(gameData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchGames();
+  }, []);
+
   return (
     <HomeWrapper>
       {/* <Background /> */}
@@ -44,7 +99,23 @@ const Home = () => {
                 <Button
                   onClick={(e) => openGamePage(e)}
                 >
-                  <img className='game-image' src={game} />
+                  <img 
+                    className='game-image' 
+                    src={game.image}
+                  />
+                  <div className='hovered-game'>
+                    <div className='hovered-header'> 
+                      <Button
+                        onClick={() => likeHandler(game.id, index)}
+                      >
+                        {game.likes.includes(userId)  ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                      </Button>
+                    </div>
+                    <div className='game-content'>
+                      <h2>{game.name}</h2>
+                      <Rate gamesState={[games, setGames] }gameId={game.id} index={index}/>
+                    </div>
+                  </div>
                 </Button>
               </div>
              )
