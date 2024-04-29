@@ -11,6 +11,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Rate from '../../Components/Rate';
 import { useEffect, useState } from 'react';
+import Filter from '../../Components/Filter';
 
 const Home = () => {
   const [games, setGames] = useState([]);
@@ -92,35 +93,40 @@ const Home = () => {
         <Header openRegisterPage={openRegisterPage} openLoginPage={openLoginPage} />
       </div>
       <div className='body-container'>
-          {
-            games.map((game,index) => {
-             return (
-              <div key={index} className='game-images'>
-                <Button
-                  onClick={(e) => openGamePage(e)}
-                >
-                  <img 
-                    className='game-image' 
-                    src={game.image}
-                  />
-                  <div className='hovered-game'>
-                    <div className='hovered-header'> 
-                      <Button
-                        onClick={() => likeHandler(game.id, index)}
-                      >
-                        {game.likes.includes(userId)  ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                      </Button>
+          <div className='filter-container'>
+            <Filter />
+          </div>
+          <div className='game-part-container'>
+            {
+              games.map((game,index) => {
+              return (
+                <div key={index} className='game-images'>
+                  <Button
+                    onClick={(e) => openGamePage(e)}
+                  >
+                    <img 
+                      className='game-image' 
+                      src={game.image}
+                    />
+                    <div className='hovered-game'>
+                      <div className='hovered-header'> 
+                        <Button
+                          onClick={() => likeHandler(game.id, index)}
+                        >
+                          {game.likes.includes(userId)  ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                        </Button>
+                      </div>
+                      <div className='game-content'>
+                        <h2>{game.name}</h2>
+                        <Rate gamesState={[games, setGames] }gameId={game.id} index={index}/>
+                      </div>
                     </div>
-                    <div className='game-content'>
-                      <h2>{game.name}</h2>
-                      <Rate gamesState={[games, setGames] }gameId={game.id} index={index}/>
-                    </div>
-                  </div>
-                </Button>
-              </div>
-             )
-            })
-          }
+                  </Button>
+                </div>
+              )
+              })
+            }
+          </div>
         </div>
     </HomeWrapper>
   )

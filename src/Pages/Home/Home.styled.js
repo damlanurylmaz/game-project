@@ -33,42 +33,52 @@ export const HomeWrapper = styled.div`
     .body-container {
         height: 100%;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 100px;
-        .game-images {
-            position: relative;
-            .game-image {
-                width: 200px;
-                height: 200px;
-                border-radius: 10px;
-                transition: .3s;
-                :hover {
-                    width:300px;
-                    height: 300px;
-
-                }
-            }
-            .hovered-game {
-                display: none;
-            }
-            :hover {
+        flex-direction: column;
+        .filter-container {
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+        }
+        .game-part-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+            padding: 100px;
+            .game-images {
+                position: relative;
                 .game-image {
-                    width: 300px;
-                    height: 300px;
+                    width: 200px;
+                    height: 200px;
+                    border-radius: 10px;
+                    transition: .3s;
+                    :hover {
+                        width:300px;
+                        height: 300px;
+
+                    }
                 }
                 .hovered-game {
-                    display: block;
-                    background-color: rgb(1,1,1,0.5);
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    .hovered-header {
-                        display: flex;
-                        justify-content: flex-end;
-                        padding: 10px;
+                    display: none;
+                }
+                :hover {
+                    .game-image {
+                        width: 300px;
+                        height: 300px;
                     }
-            }
+                    .hovered-game {
+                        display: block;
+                        background-color: rgb(1,1,1,0.5);
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        .hovered-header {
+                            display: flex;
+                            justify-content: flex-end;
+                            padding: 10px;
+                        }
+                }
+                }
             }
         }
     }
