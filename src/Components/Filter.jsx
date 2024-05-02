@@ -3,7 +3,8 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -18,39 +19,60 @@ const MenuProps = {
 
 const names = [
   'High Rate',
-  'Liked',
+  'Liked'
 ];
 
-function getStyles(name, personName, theme) {
+function getStyles(name, sortValue, theme) {
   return {
     fontWeight:
-      personName.indexOf(name) === -1
+      sortValue.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
 }
 
-export default function Filter() {
+export default function Filter({gamesState}) {
   const theme = useTheme();
-  const [personName, setPersonName] = useState([]);
+  const [sortValue, setSortValue] = useState([]);
+  const [games, setGames] = gamesState;
+  const userId = window.localStorage.getItem('userId');
+  
 
   const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+    const selectValue = event.target.value;
+    setSortValue(selectValue);
   };
+
+  useEffect(() => {
+    if (sortValue === 'Liked') {
+        // Dinamik yap 0. eleman olmaz
+        const likedArr = games.filter((gameObj) => (
+            gameObj.likes[0] === userId
+      ));
+        setGames([...likedArr]);
+      } else if (sortValue === 'High Rate') {
+        const sortedGames = [...games].sort((a, b) => {
+            const rateA = a.rates.find((rateObj) => rateObj.userId === userId)?.rate || 0;
+            const rateB = b.rates.find((rateObj) => rateObj.userId === userId)?.rate || 0;
+            return rateB - rateA;
+        });
+        console.log(sortedGames)
+        setGames(sortedGames);
+      } else {
+        console.log(games);
+      }
+  },[sortValue]);
+
+  useEffect(() => {
+    console.log(games);
+  }, [games]);
 
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
         <Select
-          multiple
           displayEmpty
-          value={personName}
+          value={sortValue}
           onChange={handleChange}
           style={{
             'backgroundColor': 'rgba(217, 214, 255, 0.753)',
@@ -60,13 +82,6 @@ export default function Filter() {
             'border': '1px solid rgba(108, 39, 255, 0.23)'
           }}
           input={<OutlinedInput />}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return <em>Sort by:</em>;
-            }
-
-            return selected.join(', ');
-          }}
           MenuProps={MenuProps}
           inputProps={{ 'aria-label': 'Without label' }}
         >
@@ -77,7 +92,7 @@ export default function Filter() {
             <MenuItem
               key={name}
               value={name}
-              style={getStyles(name, personName, theme)}
+              style={getStyles(name, sortValue, theme)}
             >
               {name}
             </MenuItem>
@@ -87,3 +102,8 @@ export default function Filter() {
     </div>
   );
 }
+
+Filter.propTypes = {
+    gamesState: PropTypes.array,
+    index: PropTypes.number
+};

@@ -18,8 +18,6 @@ const Home = () => {
   const userId = window.localStorage.getItem('userId');
   const navigate = useNavigate();
 
-  console.log(games);
-
   const openLoginPage = () => {
     const newPath = '/login';
     navigate(newPath);
@@ -88,13 +86,12 @@ const Home = () => {
 
   return (
     <HomeWrapper>
-      {/* <Background /> */}
       <div className='header'>
         <Header openRegisterPage={openRegisterPage} openLoginPage={openLoginPage} />
       </div>
       <div className='body-container'>
           <div className='filter-container'>
-            <Filter />
+            <Filter gamesState={[games, setGames]}/>
           </div>
           <div className='game-part-container'>
             {
@@ -118,7 +115,7 @@ const Home = () => {
                       </div>
                       <div className='game-content'>
                         <h2>{game.name}</h2>
-                        <Rate gamesState={[games, setGames] }gameId={game.id} index={index}/>
+                        <Rate gamesState={[games, setGames]} gameId={game.id} index={index}/>
                       </div>
                     </div>
                   </Button>
