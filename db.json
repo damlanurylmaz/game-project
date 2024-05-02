@@ -15,10 +15,10 @@
       "name": "admin",
       "surname": "admin",
       "email": "admin@gmail.com",
-      "password": "123",
+      "password": "damladamla123",
       "password2": "12345678",
       "gender": "Female",
-      "bornDate": "2001-04-23T21:00:00.000Z"
+      "bornDate": "2001-02-23T22:00:00.000Z"
     }
   ],
   "games": [
@@ -32,7 +32,7 @@
       "rates": [
         {
           "userId": "6f8d",
-          "rate": "3"
+          "rate": "2"
         }
       ]
     },
@@ -44,7 +44,7 @@
       "rates": [
         {
           "userId": "6f8d",
-          "rate": "1"
+          "rate": "5"
         }
       ]
     },
@@ -52,13 +52,11 @@
       "id": "3",
       "name": "Chess",
       "image": "chess",
-      "likes": [
-        "6f8d"
-      ],
+      "likes": [],
       "rates": [
         {
           "userId": "6f8d",
-          "rate": "2"
+          "rate": "1"
         }
       ]
     },

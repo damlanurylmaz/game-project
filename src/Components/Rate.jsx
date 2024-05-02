@@ -58,7 +58,7 @@ export default function Rate({gameId, index, gamesState}) {
   useEffect(() => {
     const newRateObj = games[index].rates.find((rateObj) => rateObj.userId === userId);
     setRateValue(newRateObj !== undefined ? newRateObj.rate : 0);
-  },[]);
+  },[games]);
 
   return (
     <Box
