@@ -34,17 +34,43 @@
           "userId": "6f8d",
           "rate": "2"
         }
+      ],
+      "comments": [
+        {
+          "userId": "f261",
+          "id": "1",
+          "description": "Bu oyuna bayildim!"
+        }
       ]
     },
     {
       "id": "2",
       "name": "Hangman",
       "image": "hangman",
-      "likes": [],
+      "likes": [
+        "6f8d"
+      ],
       "rates": [
         {
           "userId": "6f8d",
-          "rate": "5"
+          "rate": "4"
+        }
+      ],
+      "comments": [
+        {
+          "userId": "f261",
+          "id": "1",
+          "description": "Bu oyuna bayildim!"
+        },
+        {
+          "userId": "f261",
+          "id": "e339eeaf-55ca-437b-877e-73095170e212",
+          "description": "damla"
+        },
+        {
+          "userId": "f261",
+          "id": "88d0f412-d720-4d52-8c39-ea6331acb005",
+          "description": "ben begenmedim"
         }
       ]
     },
@@ -52,11 +78,24 @@
       "id": "3",
       "name": "Chess",
       "image": "chess",
-      "likes": [],
+      "likes": [
+        "f261"
+      ],
       "rates": [
         {
           "userId": "6f8d",
           "rate": "1"
+        },
+        {
+          "userId": "f261",
+          "rate": "5"
+        }
+      ],
+      "comments": [
+        {
+          "userId": "f261",
+          "id": "1",
+          "description": "Bu oyuna bayildim!"
         }
       ]
     },
@@ -64,11 +103,20 @@
       "id": "4",
       "name": "Snake",
       "image": "snake",
-      "likes": [],
+      "likes": [
+        "6f8d"
+      ],
       "rates": [
         {
           "userId": "6f8d",
           "rate": "5"
+        }
+      ],
+      "comments": [
+        {
+          "userId": "f261",
+          "id": "1",
+          "description": "Bu oyuna bayildim!"
         }
       ]
     }

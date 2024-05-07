@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useParams} from 'react-router-dom';
 import './Pages/Home/Home';
 import './Pages/GamePages/Game';
 import { Suspense, lazy } from 'react';
@@ -18,7 +18,7 @@ function App() {
           <Route index element={<Home />}/>
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />}/>
-          <Route path='/game' element={<Game />} />
+          <Route path='/game/:gameId' element={<Game />} />
           <Route path='/profile' element={<Profile />} />
         </Routes>
       </BrowserRouter>

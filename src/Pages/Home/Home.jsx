@@ -28,8 +28,9 @@ const Home = () => {
     navigate(newPath);
   };
 
-  const openGamePage = (e) => {
-    console.log(e.target.src, 'e')
+  const openGamePage = (id) => {
+    const filteredGameId = games.filter((game) => id === game.id);
+    navigate(`/game/${filteredGameId[0].id}`);
   }; 
 
   const likeHandler = async (gameId, index) => {
@@ -99,11 +100,11 @@ const Home = () => {
               return (
                 <div key={index} className='game-images'>
                   <Button
-                    onClick={(e) => openGamePage(e)}
+                    onClick={() => openGamePage(game.id)}
                   >
                     <img 
-                      className='game-image' 
-                      src={game.image}
+                      className='game-image'
+                      src={'src/assets/pngs/'+ game.image + '.jpeg'}
                     />
                     <div className='hovered-game'>
                       <div className='hovered-header'> 
