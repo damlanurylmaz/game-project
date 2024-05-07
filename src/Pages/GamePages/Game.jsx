@@ -3,7 +3,7 @@ import Header from '../../Components/Header';
 import { TextField, Button} from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useEffect, useId, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import SendIcon from '@mui/icons-material/Send';
 import { v4 as uuidv4 } from 'uuid'
@@ -52,6 +52,26 @@ const Game = () => {
     }
   };
 
+  const deleteHandler = async (commentId) => {
+    const filteredComment = comments.filter((comment) => (
+      comment.id !== commentId
+    ));
+    try {
+      const deleteComment = await fetch(`http://localHost:3000/games/${gameId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify({comments: filteredComment})
+      });
+      const response = await deleteComment.json();
+      console.log(response);
+      getGameDetail();
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
   useEffect(() => {
     getGameDetail();
   },[]);
@@ -92,7 +112,9 @@ const Game = () => {
                     <Button>
                       <EditIcon />
                     </Button>
-                    <Button>
+                    <Button
+                      onClick={() => deleteHandler(commentObj.id)}
+                    >
                       <DeleteIcon />
                     </Button>
                 </div>
