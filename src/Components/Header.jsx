@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
 
 const pages = ['About Us', 'Contact Us', 'Privacy Policy'];
 const settings = ['Profile', 'Logout'];
@@ -19,6 +20,7 @@ const settings = ['Profile', 'Logout'];
 function Header({ openLoginPage, openRegisterPage }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const user = useSelector((state) => state.home.user);
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
@@ -134,7 +136,7 @@ function Header({ openLoginPage, openRegisterPage }) {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Damla" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt={user.name} src="/static/images/avatar/2.jpg" />
                 </IconButton>
               </Tooltip>
               <Menu

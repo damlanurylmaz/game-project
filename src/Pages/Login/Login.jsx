@@ -7,9 +7,12 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import Header from '../../Components/Header';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../Home/Store/Home.slice';
 
 const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [loginData, setLoginData] = useState({
           email: '',
           password: ''
@@ -38,12 +41,27 @@ const Login = () => {
     navigate('/register');
   };
 
+  const getUser = (userId) => {
+    const authenticatedUser = async () => {
+      try {
+       const user = await fetch(`http://localhost:3000/users/${userId}`);
+       const response = await user.json();
+       console.log(response);
+       dispatch(setUser(response));
+      } catch (error) {
+       console.log(error)
+      }
+     };
+     authenticatedUser();
+  };
+
   const loginHandler = async (e) => {
     if (validateForm()) {
       const loginRequest = await axios.get(`http://localhost:3000/users?email=${loginData.email}&password=${loginData.password}`)
       if (loginRequest.data.length) {
         setOpenSuccess(true);
         localStorage.setItem('userId', loginRequest.data[0].id);
+        getUser(loginRequest.data[0].id);
         navigate('/');
       } else {
         setOpenFailed(true);

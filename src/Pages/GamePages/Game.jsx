@@ -7,12 +7,14 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import SendIcon from '@mui/icons-material/Send';
 import { v4 as uuidv4 } from 'uuid'
+import { useSelector } from "react-redux";
 
 const Game = () => {
   const [comments, setComments] = useState([])
   const {gameId} = useParams();
   const userId = window.localStorage.getItem('userId');
   const [comment, setComment] = useState('');
+  const user = useSelector((state) => state.home.user);
 
   const commentDescription = (e) => {
     const newComment = e.target.value;
@@ -41,7 +43,7 @@ const Game = () => {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({comments: [...comments, {userId, id, description: comment }]})
+        body: JSON.stringify({comments: [...comments, {userId, id, description: comment, userName: user.name }]})
       });
       const response = await newComment.json();
       console.log(response);
@@ -107,7 +109,7 @@ const Game = () => {
           {
             comments.map((commentObj) => (
               <div key={commentObj.id} className="comment-part">
-                <Avatar alt="Damla" src="/static/images/avatar/2.jpg" />
+                <Avatar alt={commentObj.userName} src="/static/images/avatar/2.jpg" />
                 <p className="show-comment">{commentObj.description}</p>
                 <div className="comment-button-container">
                     <Button>

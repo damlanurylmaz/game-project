@@ -1,8 +1,11 @@
 import './App.css'
-import { BrowserRouter, Routes, Route, useParams} from 'react-router-dom';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import './Pages/Home/Home';
 import './Pages/GamePages/Game';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setUser } from './Pages/Home/Store/Home.slice';
+
 const Home = lazy(() => import('./Pages/Home/Home'));
 const Login = lazy(() => import('./Pages/Login/Login'));
 const Game = lazy(() => import('./Pages/GamePages/Game'));
@@ -10,6 +13,25 @@ const Register = lazy(() => import('./Pages/Register/Register'));
 const Profile = lazy(() => import('./Pages/Profile/Profile'));
 
 function App() {
+  const userId = window.localStorage.getItem('userId');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(userId) {
+      const authenticatedUser = async () => {
+        try {
+         const user = await fetch(`http://localhost:3000/users/${userId}`);
+         const response = await user.json();
+         console.log(response);
+         dispatch(setUser(response));
+        } catch (error) {
+         console.log(error)
+        }
+       };
+       authenticatedUser();
+    }
+    
+  },[dispatch, userId]);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
