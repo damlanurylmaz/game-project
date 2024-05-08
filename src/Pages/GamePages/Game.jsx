@@ -1,6 +1,6 @@
 import { GameWrapper } from "./Game.styled";
 import Header from '../../Components/Header';
-import { TextField, Button} from '@mui/material';
+import { TextField, Button, Avatar} from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useEffect, useState } from "react";
@@ -26,7 +26,7 @@ const Game = () => {
       if(!commentReq.ok) {
         console.error('Error updating like status:', await commentReq.text())
       } else {
-        setComments(commentData.comments.filter((comment) => comment.userId === userId));
+        setComments(commentData.comments);
       }
     } catch (error) {
       console.log(error)
@@ -41,7 +41,7 @@ const Game = () => {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({comments: [...comments, {userId, id, description: comment}]})
+        body: JSON.stringify({comments: [...comments, {userId, id, description: comment }]})
       });
       const response = await newComment.json();
       console.log(response);
@@ -107,6 +107,7 @@ const Game = () => {
           {
             comments.map((commentObj) => (
               <div key={commentObj.id} className="comment-part">
+                <Avatar alt="Damla" src="/static/images/avatar/2.jpg" />
                 <p className="show-comment">{commentObj.description}</p>
                 <div className="comment-button-container">
                     <Button>

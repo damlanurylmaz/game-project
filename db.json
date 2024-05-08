@@ -18,7 +18,7 @@
       "password": "damladamla123",
       "password2": "12345678",
       "gender": "Female",
-      "bornDate": "2001-02-23T22:00:00.000Z"
+      "bornDate": "2001-04-23T21:00:00.000Z"
     }
   ],
   "games": [
@@ -38,6 +38,7 @@
       "comments": [
         {
           "userId": "f261",
+          "userName": "damla",
           "id": "1",
           "description": "Bu oyuna bayildim!"
         }
@@ -58,14 +59,10 @@
       ],
       "comments": [
         {
-          "userId": "f261",
-          "id": "64c37a41-ad9c-43e8-a74a-c5eedaf28c9d",
-          "description": "selamm"
-        },
-        {
-          "userId": "f261",
-          "id": "bf8cb0ec-f1f6-4002-8836-e58842cda908",
-          "description": "selam1234"
+          "userId": "6f8d",
+          "userName": "admin",
+          "id": "69d9068f-6bbe-4aa3-accb-bdecff0339df",
+          "description": "ddcsc"
         }
       ]
     },
@@ -84,13 +81,36 @@
         {
           "userId": "f261",
           "rate": "5"
+        },
+        {
+          "userId": null,
+          "rate": "5"
         }
       ],
       "comments": [
         {
           "userId": "f261",
           "id": "1",
+          "userName": "damla",
           "description": "Bu oyuna bayildim!"
+        },
+        {
+          "userId": "6f8d",
+          "userName": "admin",
+          "id": "75019c9a-80f3-4c54-ae48-ea4f2a96ccac",
+          "description": "dmalaaa"
+        },
+        {
+          "userId": "6f8d",
+          "userName": "admin",
+          "id": "60f89b9a-d2b3-4d79-9901-2eb841f12dfb",
+          "description": "guzel"
+        },
+        {
+          "userId": "6f8d",
+          "userName": "admin",
+          "id": "448e616e-3794-4aeb-84dd-858fe95e63e5",
+          "description": "guzeell"
         }
       ]
     },
@@ -110,6 +130,7 @@
       "comments": [
         {
           "userId": "f261",
+          "userName": "damla",
           "id": "1",
           "description": "Bu oyuna bayildim!"
         }

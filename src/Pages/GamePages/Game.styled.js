@@ -63,6 +63,7 @@ export const GameWrapper = styled.div`
                 margin-top: 20px;
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
                 .comment-button-container {
                     display: flex;
                 }
