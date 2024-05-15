@@ -35,14 +35,7 @@
           "rate": "2"
         }
       ],
-      "comments": [
-        {
-          "userId": "f261",
-          "userName": "damla",
-          "id": "1",
-          "description": "Bu oyuna bayildim!"
-        }
-      ]
+      "comments": "Bu oyuna bayildim!"
     },
     {
       "id": "2",
@@ -59,22 +52,10 @@
       ],
       "comments": [
         {
-          "userId": "6f8d",
-          "userName": "admin",
-          "id": "69d9068f-6bbe-4aa3-accb-bdecff0339df",
-          "description": "ddcsc"
-        },
-        {
-          "userId": "6f8d",
-          "userName": "admin",
-          "id": "e38240a7-fd0e-457f-a0e9-a32b2598a5c9",
-          "description": "selammm\n"
-        },
-        {
           "userId": "f261",
-          "userName": "admin",
-          "id": "def955a8-39b4-47cc-bd36-86c5d06cc30d",
-          "description": "ben de begendim"
+          "id": "2f5261a6-922d-4e0b-80ec-dd109226dfb9",
+          "description": "damla",
+          "userName": "damla"
         }
       ]
     },
@@ -104,13 +85,13 @@
           "userId": "f261",
           "id": "1",
           "userName": "damla",
-          "description": "Bu oyuna bayildim!"
+          "description": "selamm"
         },
         {
           "userId": "6f8d",
           "userName": "admin",
           "id": "75019c9a-80f3-4c54-ae48-ea4f2a96ccac",
-          "description": "dmalaaa"
+          "description": "merhabaaa"
         },
         {
           "userId": "f261",
@@ -138,7 +119,7 @@
           "userId": "f261",
           "userName": "damla",
           "id": "1",
-          "description": "Bu oyuna bayildim!"
+          "description": "Bu oyuna bayildim!.."
         }
       ]
     }

@@ -15,6 +15,8 @@ const Game = () => {
   const userId = window.localStorage.getItem('userId');
   const [comment, setComment] = useState('');
   const user = useSelector((state) => state.home.user);
+  const [editingCommentId, setEditingCommentId] = useState(null);
+  const [editedComment, setEditedComment] = useState('');
 
   const commentDescription = (e) => {
     const newComment = e.target.value;
@@ -74,6 +76,37 @@ const Game = () => {
     }
   };
 
+  const handleEdit = (commentId) => {
+    setEditingCommentId(commentId);
+    const commentToEdit = comments.find(comment => comment.id === commentId);
+    setEditedComment(commentToEdit.description);
+  };
+
+  const saveEditedComment = async () => {
+    try {
+      const editedCommentIndex = comments.findIndex(comment => comment.id === editingCommentId);
+      const updatedComments = [...comments];
+      updatedComments[editedCommentIndex].description = editedComment;
+      const editCommentData = await fetch(`http://localHost:3000/games/${gameId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type':'application/json'
+      },
+      body: JSON.stringify({comments: updatedComments})
+      })
+      const response = await editCommentData.json();
+      console.log(response);
+      setEditingCommentId(null);
+      getGameDetail();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const whichKey = (e) => {
+    console.log(e)
+  };
+
   useEffect(() => {
     getGameDetail();
   },[]);
@@ -91,12 +124,13 @@ const Game = () => {
           <div className='add-comment-part'>
             <TextField
               id="standard-multiline-flexible"
-              label="Comment..."
+              placeholder="Comment..."
               multiline
               maxRows={4}
               className='comment'
               onChange={(e) => commentDescription(e)}
               value={comment}
+              onKeyDown={(e) => e.key === "Enter" ? addCommentHandler() : null}
             />
             <Button
               className='send-comment-icon'
@@ -107,20 +141,37 @@ const Game = () => {
             </Button>
           </div>
           {
-            comments.map((commentObj) => (
+            Array.isArray(comments) && comments.map((commentObj) => (
               <div key={commentObj.id} className="comment-part">
                 <Avatar alt={commentObj.userName} src="/static/images/avatar/2.jpg" />
-                <p className="show-comment">{commentObj.description}</p>
-                <div className="comment-button-container">
-                    <Button>
-                      <EditIcon />
-                    </Button>
-                    <Button
-                      onClick={() => deleteHandler(commentObj.id)}
-                    >
-                      <DeleteIcon />
-                    </Button>
+                <div className="show-comment">
+                  {commentObj.id === editingCommentId ? 
+                    <TextField 
+                      value={editedComment} 
+                      onChange={(e) => setEditedComment(e.target.value)}
+                      className="commentEditInput"
+                      onKeyDown={(e) => e.key === "Enter" ? saveEditedComment() : null}
+                    /> : 
+                    commentObj.description
+                  }
                 </div>
+                { commentObj.userId === userId &&
+                  <div className="comment-button-container">
+                    {commentObj.id === editingCommentId ? 
+                      <Button onClick={saveEditedComment}>
+                        Save
+                      </Button> :
+                      <div className="button-wrapper">
+                        <Button onClick={() => handleEdit(commentObj.id)}>
+                          <EditIcon />
+                        </Button>
+                        <Button onClick={() => deleteHandler(commentObj.id)}>
+                          <DeleteIcon />
+                        </Button>
+                      </div>
+                    }
+                  </div>
+                }
               </div>
             ))
           }

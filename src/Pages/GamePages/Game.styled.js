@@ -62,10 +62,23 @@ export const GameWrapper = styled.div`
                 padding: 20px;
                 margin-top: 20px;
                 display: flex;
-                justify-content: space-between;
                 align-items: center;
+                .show-comment {
+                    flex: 1;
+                    margin-left: 30px;
+                    .commentEditInput {
+                        .MuiInputBase-input {
+                            color: #FFFFFF;
+                            border: #FFFFFF;
+                        }
+                    }
+                }
                 .comment-button-container {
                     display: flex;
+                    justify-content: flex-end;
+                    .button-wrapper {
+                        display: flex;
+                    }
                 }
             }
         }
