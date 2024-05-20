@@ -15,10 +15,10 @@
       "name": "admin",
       "surname": "admin",
       "email": "admin@gmail.com",
-      "password": "damladamla123",
+      "password": "damla123",
       "password2": "12345678",
       "gender": "Female",
-      "bornDate": "2001-04-23T21:00:00.000Z"
+      "bornDate": "2003-04-23T21:00:00.000Z"
     }
   ],
   "games": [
@@ -27,27 +27,77 @@
       "name": "TicTacToe",
       "image": "tictactoe",
       "likes": [
-        "6f8d"
+        "6f8d",
+        null
       ],
       "rates": [
         {
           "userId": "6f8d",
-          "rate": "2"
+          "rate": "5"
+        },
+        {
+          "userId": null,
+          "rate": 1
+        },
+        {
+          "userId": "f261",
+          "rate": 1
         }
       ],
-      "comments": "Bu oyuna bayildim!"
+      "comments": [
+        "B",
+        "u",
+        " ",
+        "o",
+        "y",
+        "u",
+        "n",
+        "a",
+        " ",
+        "b",
+        "a",
+        "y",
+        "i",
+        "l",
+        "d",
+        "i",
+        "m",
+        "!",
+        {
+          "userId": "f261",
+          "id": "1d8b578a-116a-4eac-aaae-c8a394bc7f42",
+          "description": "fdndkjndfjkf",
+          "userName": "damla"
+        },
+        {
+          "userId": "f261",
+          "id": "eb186799-9060-436b-b158-d4dc58a8f9be",
+          "description": "dkjfnvkd",
+          "userName": "damla"
+        }
+      ]
     },
     {
       "id": "2",
       "name": "Hangman",
       "image": "hangman",
       "likes": [
-        "6f8d"
+        "6f8d",
+        null,
+        "f261"
       ],
       "rates": [
         {
           "userId": "6f8d",
-          "rate": "4"
+          "rate": "2"
+        },
+        {
+          "userId": "f261",
+          "rate": 4
+        },
+        {
+          "userId": null,
+          "rate": 5
         }
       ],
       "comments": [
@@ -56,6 +106,11 @@
           "id": "2f5261a6-922d-4e0b-80ec-dd109226dfb9",
           "description": "damla",
           "userName": "damla"
+        },
+        {
+          "userId": null,
+          "id": "7f002cd6-a286-41a1-80e8-08983a4cb1de",
+          "description": "merhaba"
         }
       ]
     },
@@ -69,15 +124,15 @@
       "rates": [
         {
           "userId": "6f8d",
-          "rate": "1"
-        },
-        {
-          "userId": "f261",
-          "rate": "5"
+          "rate": "4"
         },
         {
           "userId": null,
-          "rate": "5"
+          "rate": 4
+        },
+        {
+          "userId": "f261",
+          "rate": 5
         }
       ],
       "comments": [
@@ -112,16 +167,17 @@
         {
           "userId": "6f8d",
           "rate": "5"
-        }
-      ],
-      "comments": [
+        },
+        {
+          "userId": null,
+          "rate": "5"
+        },
         {
           "userId": "f261",
-          "userName": "damla",
-          "id": "1",
-          "description": "Bu oyuna bayildim!.."
+          "rate": 5
         }
-      ]
+      ],
+      "comments": []
     }
   ]
 }

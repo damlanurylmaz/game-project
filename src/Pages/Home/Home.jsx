@@ -17,6 +17,7 @@ const Home = () => {
   const [games, setGames] = useState([]);
   const userId = window.localStorage.getItem('userId');
   const navigate = useNavigate();
+  const [filteredGames, setFilteredGames] = useState([]);
 
   const openLoginPage = () => {
     const newPath = '/login';
@@ -28,12 +29,14 @@ const Home = () => {
     navigate(newPath);
   };
 
-  const openGamePage = (id) => {
+  const openGamePage = (e,id) => {
+    console.log(e.target.id, ` ppaapapap`);
+    e.stopPropagation();
     const filteredGameId = games.filter((game) => id === game.id);
     navigate(`/game/${filteredGameId[0].id}`);
   }; 
 
-  const likeHandler = async (gameId, index) => {
+  const likeHandler = async (e, gameId, index) => {
     const checkedIsLiked = games[index].likes.includes(userId);
     if(checkedIsLiked) {
       const filteredLikes = games[index].likes.filter((id) => id !== userId);
@@ -78,6 +81,7 @@ const Home = () => {
         const response = await fetch('http://localhost:3000/games');
         const gameData = await response.json();
         setGames(gameData);
+        setFilteredGames(gameData);
       } catch (error) {
         console.error(error);
       }
@@ -92,36 +96,39 @@ const Home = () => {
       </div>
       <div className='body-container'>
           <div className='filter-container'>
-            <Filter gamesState={[games, setGames]}/>
+            <Filter gamesState={[games, setGames]} filteredGamesState={[filteredGames, setFilteredGames]}/>
           </div>
           <div className='game-part-container'>
             {
-              games.map((game,index) => {
-              return (
-                <div key={index} className='game-images'>
-                  <Button
-                    onClick={() => openGamePage(game.id)}
-                  >
-                    <img 
-                      className='game-image'
-                      src={'src/assets/pngs/'+ game.image + '.jpeg'}
-                    />
-                    <div className='hovered-game'>
-                      <div className='hovered-header'> 
-                        <Button
-                          onClick={() => likeHandler(game.id, index)}
-                        >
-                          {game.likes.includes(userId)  ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                        </Button>
-                      </div>
-                      <div className='game-content'>
-                        <h2>{game.name}</h2>
-                        <Rate gamesState={[games, setGames]} gameId={game.id} index={index}/>
+              filteredGames.map((game,index) => {
+                return (
+                  <div key={index} className='game-images'>
+                    <div>
+                      <img 
+                        className='game-image'
+                        src={'src/assets/pngs/'+ game.image + '.jpeg'}
+                      />
+                      <div className='hovered-game'>
+                        <div className='hovered-header'> 
+                          <Button
+                            onClick={(e) => likeHandler(e, game.id, index)}
+                          >
+                            {game.likes.includes(userId)  ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                          </Button>
+                        </div>
+                        <div className='game-content'>
+                          <h2>{game.name}</h2>
+                          <Rate gamesState={[filteredGames, setFilteredGames]} gameId={game.id} index={index}/>
+                        </div>
+                        <div className='play-button'>
+                          <Button onClick={(e) => openGamePage(e, game.id)} variant='contained'>
+                            PLAY
+                          </Button>
+                        </div>
                       </div>
                     </div>
-                  </Button>
-                </div>
-              )
+                  </div>
+                )
               })
             }
           </div>

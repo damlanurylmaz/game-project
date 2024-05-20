@@ -55,7 +55,6 @@ export const HomeWrapper = styled.div`
                     :hover {
                         width:300px;
                         height: 300px;
-
                     }
                 }
                 .hovered-game {
@@ -70,6 +69,8 @@ export const HomeWrapper = styled.div`
                         display: block;
                         background-color: rgb(1,1,1,0.5);
                         position: absolute;
+                        top: 0;
+                        left: 0;
                         width: 100%;
                         height: 100%;
                         .hovered-header {
@@ -77,7 +78,16 @@ export const HomeWrapper = styled.div`
                             justify-content: flex-end;
                             padding: 10px;
                         }
-                }
+                        .game-content {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                        }
+                        .play-button {
+                            display: flex;
+                            justify-content: center;
+                        }
+                    }
                 }
             }
         }
