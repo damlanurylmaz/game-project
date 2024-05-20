@@ -39,18 +39,23 @@ const Game = () => {
 
   const addCommentHandler = async () => {
     try {
-      const id = uuidv4();
-      const newComment = await fetch(`http://localhost:3000/games/${gameId}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({comments: [...comments, {userId, id, description: comment, userName: user.name }]})
-      });
-      const response = await newComment.json();
-      console.log(response);
-      setComment('');
-      getGameDetail();
+      if(userId) {
+        const id = uuidv4();
+        const newComment = await fetch(`http://localhost:3000/games/${gameId}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({comments: [...comments, {userId, id, description: comment, userName: user.name }]})
+        });
+        const response = await newComment.json();
+        console.log(response);
+        setComment('');
+        getGameDetail();
+      }
+      else {
+        alert('You need to login!!')
+      }
     } catch (error) {
       console.log(error)
     }

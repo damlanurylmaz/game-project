@@ -36,33 +36,15 @@
           "rate": "5"
         },
         {
-          "userId": null,
+          "userId": "f261",
           "rate": 1
         },
         {
-          "userId": "f261",
-          "rate": 1
+          "userId": null,
+          "rate": 5
         }
       ],
       "comments": [
-        "B",
-        "u",
-        " ",
-        "o",
-        "y",
-        "u",
-        "n",
-        "a",
-        " ",
-        "b",
-        "a",
-        "y",
-        "i",
-        "l",
-        "d",
-        "i",
-        "m",
-        "!",
         {
           "userId": "f261",
           "id": "1d8b578a-116a-4eac-aaae-c8a394bc7f42",
@@ -73,6 +55,18 @@
           "userId": "f261",
           "id": "eb186799-9060-436b-b158-d4dc58a8f9be",
           "description": "dkjfnvkd",
+          "userName": "damla"
+        },
+        {
+          "userId": "f261",
+          "id": "9486102b-edd8-4796-96cb-b752c6cef2e1",
+          "description": "sds",
+          "userName": "damla"
+        },
+        {
+          "userId": "f261",
+          "id": "c4dc76ab-ff93-4b1c-bc33-c755f858df19",
+          "description": "sdddss",
           "userName": "damla"
         }
       ]
@@ -127,12 +121,12 @@
           "rate": "4"
         },
         {
-          "userId": null,
-          "rate": 4
-        },
-        {
           "userId": "f261",
           "rate": 5
+        },
+        {
+          "userId": null,
+          "rate": 2
         }
       ],
       "comments": [

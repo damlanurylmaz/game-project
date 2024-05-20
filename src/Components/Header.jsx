@@ -17,7 +17,7 @@ import { useSelector } from 'react-redux';
 const pages = ['About Us', 'Contact Us', 'Privacy Policy'];
 const settings = ['Profile', 'Logout'];
 
-function Header({ openLoginPage, openRegisterPage }) {
+function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const user = useSelector((state) => state.home.user);
@@ -42,6 +42,16 @@ function Header({ openLoginPage, openRegisterPage }) {
       window.localStorage.removeItem('userId');
       navigate('/');
     }
+  };
+
+  const openLoginPage = () => {
+    const newPath = '/login';
+    navigate(newPath);
+  };
+
+  const openRegisterPage = () => {
+    const newPath = '/register';
+    navigate(newPath);
   };
 
   return (

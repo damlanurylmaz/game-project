@@ -37,41 +37,45 @@ const Home = () => {
   }; 
 
   const likeHandler = async (e, gameId, index) => {
-    const checkedIsLiked = games[index].likes.includes(userId);
-    if(checkedIsLiked) {
-      const filteredLikes = games[index].likes.filter((id) => id !== userId);
-      try {
-        const likeRequest = await fetch(`http://localhost:3000/games/${gameId}`, {
-          method: 'PATCH',
-          body: JSON.stringify({ likes: filteredLikes})
-        });
-        if(!likeRequest.ok) {
-          console.error('Error updating like status:', await likeRequest.text());
-        } else {
-          const updatedGames = [...games];
-          updatedGames[index].likes = filteredLikes;
-          setGames(updatedGames);
+    if(userId) {
+      const checkedIsLiked = games[index].likes.includes(userId);
+      if(checkedIsLiked) {
+        const filteredLikes = games[index].likes.filter((id) => id !== userId);
+        try {
+          const likeRequest = await fetch(`http://localhost:3000/games/${gameId}`, {
+            method: 'PATCH',
+            body: JSON.stringify({ likes: filteredLikes})
+          });
+          if(!likeRequest.ok) {
+            console.error('Error updating like status:', await likeRequest.text());
+          } else {
+            const updatedGames = [...games];
+            updatedGames[index].likes = filteredLikes;
+            setGames(updatedGames);
+          }
+        } catch (error) {
+          console.log(error)
         }
-      } catch (error) {
-        console.log(error)
+      } else {
+        try {
+          const likesArr = [...games[index].likes, userId];
+          const likeRequest = await fetch(`http://localhost:3000/games/${gameId}`, {
+            method: 'PATCH',
+            body: JSON.stringify({ likes: likesArr})
+          });
+          if(!likeRequest.ok) {
+            console.error('Error updating like status:', await likeRequest.text());
+          } else {
+            const updatedGames = [...games];
+            updatedGames[index].likes = likesArr;
+            setGames(updatedGames);
+          }
+        } catch (error) {
+          console.log(error)
+        }
       }
     } else {
-      try {
-        const likesArr = [...games[index].likes, userId];
-        const likeRequest = await fetch(`http://localhost:3000/games/${gameId}`, {
-          method: 'PATCH',
-          body: JSON.stringify({ likes: likesArr})
-        });
-        if(!likeRequest.ok) {
-          console.error('Error updating like status:', await likeRequest.text());
-        } else {
-          const updatedGames = [...games];
-          updatedGames[index].likes = likesArr;
-          setGames(updatedGames);
-        }
-      } catch (error) {
-        console.log(error)
-      }
+      alert('You need to login!')
     }
   };
 
@@ -92,7 +96,7 @@ const Home = () => {
   return (
     <HomeWrapper>
       <div className='header'>
-        <Header openRegisterPage={openRegisterPage} openLoginPage={openLoginPage} />
+        <Header />
       </div>
       <div className='body-container'>
           <div className='filter-container'>
