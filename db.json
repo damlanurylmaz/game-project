@@ -77,7 +77,6 @@
       "image": "hangman",
       "likes": [
         "6f8d",
-        null,
         "f261"
       ],
       "rates": [
@@ -88,10 +87,6 @@
         {
           "userId": "f261",
           "rate": 4
-        },
-        {
-          "userId": null,
-          "rate": 5
         }
       ],
       "comments": [
@@ -102,9 +97,16 @@
           "userName": "damla"
         },
         {
-          "userId": null,
-          "id": "7f002cd6-a286-41a1-80e8-08983a4cb1de",
-          "description": "merhaba"
+          "userId": "6f8d",
+          "id": "729fbef0-42e1-412d-b5d6-9108e6da949b",
+          "description": "damla",
+          "userName": "admin"
+        },
+        {
+          "userId": "6f8d",
+          "id": "64e8e5ef-65d2-433f-a66d-9f78b11cacc5",
+          "description": "damlaa",
+          "userName": "admin"
         }
       ]
     },
@@ -123,10 +125,6 @@
         {
           "userId": "f261",
           "rate": 5
-        },
-        {
-          "userId": null,
-          "rate": 2
         }
       ],
       "comments": [
@@ -163,15 +161,24 @@
           "rate": "5"
         },
         {
-          "userId": null,
-          "rate": "5"
-        },
-        {
           "userId": "f261",
           "rate": 5
         }
       ],
-      "comments": []
+      "comments": [
+        {
+          "userId": "6f8d",
+          "id": "14576d07-5f43-4a99-b4b6-8cc00ada4be3",
+          "description": "selama",
+          "userName": "admin"
+        },
+        {
+          "userId": "6f8d",
+          "id": "49133dd4-3c9d-4d2c-a2c4-d299b0436601",
+          "description": "a",
+          "userName": "admin"
+        }
+      ]
     }
   ]
 }

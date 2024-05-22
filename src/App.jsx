@@ -11,6 +11,7 @@ const Login = lazy(() => import('./Pages/Login/Login'));
 const Game = lazy(() => import('./Pages/GamePages/Game'));
 const Register = lazy(() => import('./Pages/Register/Register'));
 const Profile = lazy(() => import('./Pages/Profile/Profile'));
+const InfoPages = lazy(() => import('./Components/InfoPages'));
 
 function App() {
   const userId = window.localStorage.getItem('userId');
@@ -42,6 +43,7 @@ function App() {
           <Route path='/register' element={<Register />}/>
           <Route path='/game/:gameId' element={<Game />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/:page' element={<InfoPages />} />
         </Routes>
       </BrowserRouter>
     </Suspense>

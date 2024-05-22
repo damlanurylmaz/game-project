@@ -54,6 +54,16 @@ function Header() {
     navigate(newPath);
   };
 
+  const openPageDetail = (page) => {
+    if(page === 'About Us'){
+      navigate('/about')
+    }if(page === 'Contact Us') {
+      navigate('/contact')
+    }if(page === 'Privacy Policy') {
+      navigate('/privacy')
+    }
+  };
+
   return (
     <AppBar style={{background:'rgba(108, 39, 255, 0.1)' }} position="static">
       <Container maxWidth="xl" style={{}}>
@@ -134,7 +144,7 @@ function Header() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => openPageDetail(page)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}

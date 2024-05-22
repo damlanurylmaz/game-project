@@ -108,10 +108,6 @@ const Game = () => {
     }
   };
 
-  const whichKey = (e) => {
-    console.log(e)
-  };
-
   useEffect(() => {
     getGameDetail();
   },[]);
