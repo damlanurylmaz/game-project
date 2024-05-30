@@ -19,15 +19,15 @@ const Home = () => {
   const navigate = useNavigate();
   const [filteredGames, setFilteredGames] = useState([]);
 
-  const openLoginPage = () => {
-    const newPath = '/login';
-    navigate(newPath);
-  };
+  // const openLoginPage = () => {
+  //   const newPath = '/login';
+  //   navigate(newPath);
+  // };
 
-  const openRegisterPage = () => {
-    const newPath = '/register';
-    navigate(newPath);
-  };
+  // const openRegisterPage = () => {
+  //   const newPath = '/register';
+  //   navigate(newPath);
+  // };
 
   const openGamePage = (e,id) => {
     console.log(e.target.id, ` ppaapapap`);

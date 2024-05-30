@@ -39,7 +39,7 @@ const Game = () => {
 
   const addCommentHandler = async () => {
     try {
-      if(userId) {
+      if(userId && comment) {
         const id = uuidv4();
         const newComment = await fetch(`http://localhost:3000/games/${gameId}`, {
           method: "PATCH",
@@ -54,7 +54,7 @@ const Game = () => {
         getGameDetail();
       }
       else {
-        alert('You need to login!!')
+        alert('You cannot send comment!!')
       }
     } catch (error) {
       console.log(error)
