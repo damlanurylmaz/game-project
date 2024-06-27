@@ -1,10 +1,8 @@
 import { Alert, Button, Snackbar, TextField } from "@mui/material"
-import Background from "../Home/Background"
 import { RegisterWrapper } from "./Register.styled"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import axios from "axios";
 import Header from "../../Components/Header";
 
 const Register = () => {

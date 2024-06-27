@@ -15,10 +15,10 @@
       "name": "admin",
       "surname": "admin",
       "email": "admin@gmail.com",
-      "password": "damla123",
+      "password": "damladamla123",
       "password2": "12345678",
       "gender": "Female",
-      "bornDate": "2003-04-23T21:00:00.000Z"
+      "bornDate": "2001-04-23T21:00:00.000Z"
     }
   ],
   "games": [
@@ -80,11 +80,11 @@
       ],
       "rates": [
         {
-          "userId": "6f8d",
-          "rate": "2"
+          "userId": "f261",
+          "rate": 4
         },
         {
-          "userId": "f261",
+          "userId": "6f8d",
           "rate": 4
         }
       ],
@@ -118,7 +118,7 @@
         },
         {
           "userId": "6f8d",
-          "rate": 2
+          "rate": 5
         }
       ],
       "comments": [
@@ -151,12 +151,12 @@
       ],
       "rates": [
         {
-          "userId": "6f8d",
-          "rate": "5"
-        },
-        {
           "userId": "f261",
           "rate": 5
+        },
+        {
+          "userId": "6f8d",
+          "rate": 1
         }
       ],
       "comments": []

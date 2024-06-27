@@ -1,6 +1,7 @@
 import { GameWrapper } from "./Game.styled";
 import Header from '../../Components/Header';
 import GameComment from "./Components/GameComment";
+import TowersOfHanoi from "./Components/TowersOfHanoi";
 
 const Game = () => {
 
@@ -11,7 +12,7 @@ const Game = () => {
       </div>
       <div className='game-detail-wrapper'>
         <div className='game-container'>
-          GAME
+          <TowersOfHanoi />
         </div>
         <GameComment />
       </div>

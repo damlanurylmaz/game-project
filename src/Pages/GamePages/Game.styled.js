@@ -25,7 +25,50 @@ export const GameWrapper = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        .game-container {
+            background: rgba(108, 39, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5.3px);
+            -webkit-backdrop-filter: blur(5.3px);
+            border: 1px solid rgba(108, 39, 255, 0.23);
+            padding: 30px;
+            margin: 50px 0 50px 0;
+            border-radius: 15px;
+        }
     }   
+`;
+
+export const GameContentWrapper = styled.div`
+    padding: 100px;
+    border-radius: 15px;
+    .towers-container {
+        display: flex;
+        gap: 150px;
+        border-bottom: 20px solid #6C27FF;
+        .towers {
+            width: 20px;
+            .tower {
+                background-color: #6C27FF;
+                height: 200px;
+                cursor: pointer;
+                display: flex;
+                justify-content: flex-end;
+                flex-direction: column;
+                align-items: center;
+                :hover {
+                    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+                    transition: 300ms;
+                }
+                .disk {
+                  padding: 15px;
+                  background-color: orange;
+                  display: flex;
+                  gap: 20px;
+                  outline: none;
+                }
+            }
+        }
+    }
 `;
 
 export const CommentWrapper = styled.div`
