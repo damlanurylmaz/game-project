@@ -2,9 +2,9 @@ body {
     background-image: url("./assets/pngs/image2.png");
     width: 100vw;
     height: 100vh;
-    /* mix-blend-mode: soft-light; */
+    overflow-y: auto;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: fixed; 
     background-position: center; 
     background-size: cover;
 }

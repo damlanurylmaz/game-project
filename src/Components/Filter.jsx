@@ -31,9 +31,10 @@ function getStyles(name, sortValue, theme) {
   };
 }
 
-export default function Filter({gamesState}) {
+export default function Filter({filteredGamesState ,gamesState}) {
   const theme = useTheme();
-  const [sortValue, setSortValue] = useState([]);
+  const [sortValue, setSortValue] = useState('');
+  const [filteredGames, setFilteredGames] = filteredGamesState;
   const [games, setGames] = gamesState;
   const userId = window.localStorage.getItem('userId');
   
@@ -45,11 +46,11 @@ export default function Filter({gamesState}) {
 
   useEffect(() => {
     if (sortValue === 'Liked') {
-        // Dinamik yap 0. eleman olmaz
-        const likedArr = games.filter((gameObj) => (
-            gameObj.likes[0] === userId
+      console.log('liked mi')
+      const likedArr = filteredGames.filter((gameObj) => (
+        gameObj.likes.includes(userId)
       ));
-        setGames([...likedArr]);
+      setFilteredGames([...likedArr]);
       } else if (sortValue === 'High Rate') {
         const sortedGames = [...games].sort((a, b) => {
             const rateA = a.rates.find((rateObj) => rateObj.userId === userId)?.rate || 0;
@@ -57,15 +58,15 @@ export default function Filter({gamesState}) {
             return rateB - rateA;
         });
         console.log(sortedGames)
-        setGames(sortedGames);
+        setFilteredGames(sortedGames);
       } else {
-        console.log(games);
+        console.log(filteredGames);
       }
   },[sortValue]);
 
   useEffect(() => {
-    console.log(games);
-  }, [games]);
+    console.log(filteredGames, 'bu iste');
+  }, [filteredGames]);
 
   return (
     <div>

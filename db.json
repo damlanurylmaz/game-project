@@ -18,7 +18,7 @@
       "password": "damladamla123",
       "password2": "12345678",
       "gender": "Female",
-      "bornDate": "2001-02-23T22:00:00.000Z"
+      "bornDate": "2001-04-23T21:00:00.000Z"
     }
   ],
   "games": [
@@ -27,24 +27,79 @@
       "name": "TicTacToe",
       "image": "tictactoe",
       "likes": [
-        "6f8d"
+        "6f8d",
+        null
       ],
       "rates": [
         {
           "userId": "6f8d",
-          "rate": "2"
+          "rate": "5"
+        },
+        {
+          "userId": "f261",
+          "rate": 1
+        },
+        {
+          "userId": null,
+          "rate": 5
+        }
+      ],
+      "comments": [
+        {
+          "userId": "f261",
+          "id": "1d8b578a-116a-4eac-aaae-c8a394bc7f42",
+          "description": "fdndkjndfjkf",
+          "userName": "damla"
+        },
+        {
+          "userId": "f261",
+          "id": "eb186799-9060-436b-b158-d4dc58a8f9be",
+          "description": "dkjfnvkd",
+          "userName": "damla"
+        },
+        {
+          "userId": "f261",
+          "id": "9486102b-edd8-4796-96cb-b752c6cef2e1",
+          "description": "sds",
+          "userName": "damla"
+        },
+        {
+          "userId": "f261",
+          "id": "c4dc76ab-ff93-4b1c-bc33-c755f858df19",
+          "description": "sdddss",
+          "userName": "damla"
         }
       ]
     },
     {
       "id": "2",
-      "name": "Hangman",
-      "image": "hangman",
-      "likes": [],
+      "name": "Towers of Hanoi",
+      "image": "towersOfHanoi",
+      "likes": [
+        "f261"
+      ],
       "rates": [
         {
+          "userId": "f261",
+          "rate": 4
+        },
+        {
           "userId": "6f8d",
-          "rate": "5"
+          "rate": 4
+        }
+      ],
+      "comments": [
+        {
+          "userId": "f261",
+          "id": "2f5261a6-922d-4e0b-80ec-dd109226dfb9",
+          "description": "damla",
+          "userName": "damla"
+        },
+        {
+          "userId": "6f8d",
+          "id": "64e8e5ef-65d2-433f-a66d-9f78b11cacc5",
+          "description": "damlaa",
+          "userName": "admin"
         }
       ]
     },
@@ -52,11 +107,38 @@
       "id": "3",
       "name": "Chess",
       "image": "chess",
-      "likes": [],
+      "likes": [
+        "f261",
+        "6f8d"
+      ],
       "rates": [
         {
+          "userId": "f261",
+          "rate": 5
+        },
+        {
           "userId": "6f8d",
-          "rate": "1"
+          "rate": 5
+        }
+      ],
+      "comments": [
+        {
+          "userId": "f261",
+          "id": "1",
+          "userName": "damla",
+          "description": "selamm"
+        },
+        {
+          "userId": "6f8d",
+          "userName": "admin",
+          "id": "75019c9a-80f3-4c54-ae48-ea4f2a96ccac",
+          "description": "merhabaaa"
+        },
+        {
+          "userId": "f261",
+          "id": "7291886d-ea8c-433c-b1cb-2ee46e4883d5",
+          "description": "ben sevmedim",
+          "userName": "damla"
         }
       ]
     },
@@ -64,13 +146,20 @@
       "id": "4",
       "name": "Snake",
       "image": "snake",
-      "likes": [],
+      "likes": [
+        "6f8d"
+      ],
       "rates": [
         {
+          "userId": "f261",
+          "rate": 5
+        },
+        {
           "userId": "6f8d",
-          "rate": "5"
+          "rate": 1
         }
-      ]
+      ],
+      "comments": []
     }
   ]
 }

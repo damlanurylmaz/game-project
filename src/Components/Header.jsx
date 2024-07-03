@@ -12,13 +12,15 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
 
 const pages = ['About Us', 'Contact Us', 'Privacy Policy'];
 const settings = ['Profile', 'Logout'];
 
-function Header({ openLoginPage, openRegisterPage }) {
+function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const user = useSelector((state) => state.home.user);
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
@@ -39,6 +41,26 @@ function Header({ openLoginPage, openRegisterPage }) {
     } else if(setting === 'Logout'){
       window.localStorage.removeItem('userId');
       navigate('/');
+    }
+  };
+
+  const openLoginPage = () => {
+    const newPath = '/login';
+    navigate(newPath);
+  };
+
+  const openRegisterPage = () => {
+    const newPath = '/register';
+    navigate(newPath);
+  };
+
+  const openPageDetail = (page) => {
+    if(page === 'About Us'){
+      navigate('/about')
+    }if(page === 'Contact Us') {
+      navigate('/contact')
+    }if(page === 'Privacy Policy') {
+      navigate('/privacy')
     }
   };
 
@@ -122,7 +144,7 @@ function Header({ openLoginPage, openRegisterPage }) {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => openPageDetail(page)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
@@ -134,7 +156,7 @@ function Header({ openLoginPage, openRegisterPage }) {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Damla" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt={user.name} src="/static/images/avatar/2.jpg" />
                 </IconButton>
               </Tooltip>
               <Menu

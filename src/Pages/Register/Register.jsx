@@ -1,10 +1,8 @@
 import { Alert, Button, Snackbar, TextField } from "@mui/material"
-import Background from "../Home/Background"
 import { RegisterWrapper } from "./Register.styled"
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import axios from "axios";
 import Header from "../../Components/Header";
 
 const Register = () => {
@@ -85,6 +83,20 @@ const Register = () => {
     setError(newError);
     return isValid;
 
+  };
+
+  const handleCloseSuccess = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSuccess(false);
+  };
+
+  const handleCloseFailed = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenFailed(false);
   };
 
   const openLoginPage = () => {
@@ -173,9 +185,9 @@ const Register = () => {
                     Register
                 </Button>
           </div>
-          <Snackbar open={openSuccess} autoHideDuration={6000} onClose={handleClose}>
+          <Snackbar open={openSuccess} autoHideDuration={6000} onClose={handleCloseSuccess}>
               <Alert
-                onClose={handleClose}
+                onClose={handleCloseSuccess}
                 severity="success"
                 variant="filled"
                 sx={{ width: '100%' }}
@@ -183,9 +195,9 @@ const Register = () => {
                 User Registered
               </Alert>
         </Snackbar>
-        <Snackbar open={openFailed} autoHideDuration={6000} onClose={handleClose}>
+        <Snackbar open={openFailed} autoHideDuration={6000} onClose={handleCloseFailed}>
               <Alert
-                onClose={handleClose}
+                onClose={handleCloseFailed}
                 severity="error"
                 variant="filled"
                 sx={{ width: '100%' }}
