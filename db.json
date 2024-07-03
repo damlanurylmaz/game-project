@@ -6,17 +6,7 @@
       "surname": "yilmaz",
       "email": "damlanur.yilmaz@hotmail.com",
       "password": "damla123",
-      "password2": "12345678",
-      "gender": "Female",
-      "bornDate": "2001-04-23T21:00:00.000Z"
-    },
-    {
-      "id": "6f8d",
-      "name": "admin",
-      "surname": "admin",
-      "email": "admin@gmail.com",
-      "password": "damladamla123",
-      "password2": "12345678",
+      "password2": "damla123",
       "gender": "Female",
       "bornDate": "2001-04-23T21:00:00.000Z"
     }

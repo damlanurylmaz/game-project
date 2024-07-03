@@ -46,7 +46,6 @@ export default function Filter({filteredGamesState ,gamesState}) {
 
   useEffect(() => {
     if (sortValue === 'Liked') {
-      console.log('liked mi')
       const likedArr = filteredGames.filter((gameObj) => (
         gameObj.likes.includes(userId)
       ));
@@ -65,7 +64,7 @@ export default function Filter({filteredGamesState ,gamesState}) {
   },[sortValue]);
 
   useEffect(() => {
-    console.log(filteredGames, 'bu iste');
+    console.log(filteredGames);
   }, [filteredGames]);
 
   return (
